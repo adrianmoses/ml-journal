@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Intro to NLP | adrian moses</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Intro to NLP" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Notes from the Kaggle Course." />
+<meta property="og:description" content="Notes from the Kaggle Course." />
+<link rel="canonical" href="https://adrianmoses.github.io/ml-journal/jupyter/2021/09/18/intro-to-nlp.html" />
+<meta property="og:url" content="https://adrianmoses.github.io/ml-journal/jupyter/2021/09/18/intro-to-nlp.html" />
+<meta property="og:site_name" content="adrian moses" />
+<meta property="og:image" content="https://adrianmoses.github.io/ml-journal/images/chart-preview.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-09-18T00:00:00-05:00" />
+<script type="application/ld+json">
+{"datePublished":"2021-09-18T00:00:00-05:00","url":"https://adrianmoses.github.io/ml-journal/jupyter/2021/09/18/intro-to-nlp.html","@type":"BlogPosting","image":"https://adrianmoses.github.io/ml-journal/images/chart-preview.png","headline":"Intro to NLP","dateModified":"2021-09-18T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://adrianmoses.github.io/ml-journal/jupyter/2021/09/18/intro-to-nlp.html"},"description":"Notes from the Kaggle Course.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/ml-journal/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://adrianmoses.github.io/ml-journal/feed.xml" title="adrian moses" /><link rel="shortcut icon" type="image/x-icon" href="/ml-journal/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/ml-journal/">adrian moses</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/ml-journal/about/">About Me</a><a class="page-link" href="/ml-journal/search/">Search</a><a class="page-link" href="/ml-journal/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Intro to NLP</h1><p class="page-description">Notes from the Kaggle Course.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-09-18T00:00:00-05:00" itemprop="datePublished">
+        Sep 18, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      6 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/ml-journal/categories/#jupyter">jupyter</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/adrianmoses/ml-journal/tree/master/_notebooks/2021-09-18-intro-to-nlp.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/ml-journal/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/adrianmoses/ml-journal/master?filepath=_notebooks%2F2021-09-18-intro-to-nlp.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/ml-journal/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/adrianmoses/ml-journal/blob/master/_notebooks/2021-09-18-intro-to-nlp.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/ml-journal/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#Pattern-Matching">Pattern Matching </a></li>
+<li class="toc-entry toc-h2"><a href="#Text-Classification">Text Classification </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2021-09-18-intro-to-nlp.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This course appears a bit more hands-on as it starts off with introducing spacy. <code>spacy.load</code> code examples are added</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip install spacy
+<span class="o">!</span>python -m spacy download en
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Requirement already satisfied: spacy in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (3.1.2)
+Requirement already satisfied: requests&lt;3.0.0,&gt;=2.13.0 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy) (2.25.1)
+Requirement already satisfied: catalogue&lt;2.1.0,&gt;=2.0.4 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy) (2.0.6)
+Requirement already satisfied: tqdm&lt;5.0.0,&gt;=4.38.0 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy) (4.59.0)
+Requirement already satisfied: pydantic!=1.8,!=1.8.1,&lt;1.9.0,&gt;=1.7.4 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy) (1.8.2)
+Requirement already satisfied: srsly&lt;3.0.0,&gt;=2.4.1 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy) (2.4.1)
+Requirement already satisfied: thinc&lt;8.1.0,&gt;=8.0.8 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy) (8.0.10)
+Requirement already satisfied: pathy&gt;=0.3.5 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy) (0.6.0)
+Requirement already satisfied: jinja2 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy) (2.11.3)
+Requirement already satisfied: packaging&gt;=20.0 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy) (20.9)
+Requirement already satisfied: cymem&lt;2.1.0,&gt;=2.0.2 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy) (2.0.5)
+Requirement already satisfied: blis&lt;0.8.0,&gt;=0.4.0 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy) (0.7.4)
+Requirement already satisfied: wasabi&lt;1.1.0,&gt;=0.8.1 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy) (0.8.2)
+Requirement already satisfied: numpy&gt;=1.15.0 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy) (1.20.1)
+Requirement already satisfied: typer&lt;0.4.0,&gt;=0.3.0 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy) (0.3.2)
+Requirement already satisfied: setuptools in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy) (52.0.0.post20210125)
+Requirement already satisfied: preshed&lt;3.1.0,&gt;=3.0.2 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy) (3.0.5)
+Requirement already satisfied: murmurhash&lt;1.1.0,&gt;=0.28.0 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy) (1.0.5)
+Requirement already satisfied: spacy-legacy&lt;3.1.0,&gt;=3.0.7 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy) (3.0.8)
+Requirement already satisfied: pyparsing&gt;=2.0.2 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from packaging&gt;=20.0-&gt;spacy) (2.4.7)
+Requirement already satisfied: smart-open&lt;6.0.0,&gt;=5.0.0 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from pathy&gt;=0.3.5-&gt;spacy) (5.2.1)
+Requirement already satisfied: typing-extensions&gt;=3.7.4.3 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from pydantic!=1.8,!=1.8.1,&lt;1.9.0,&gt;=1.7.4-&gt;spacy) (3.7.4.3)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy) (2020.12.5)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy) (2.10)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy) (1.26.4)
+Requirement already satisfied: chardet&lt;5,&gt;=3.0.2 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy) (4.0.0)
+Requirement already satisfied: click&lt;7.2.0,&gt;=7.1.1 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from typer&lt;0.4.0,&gt;=0.3.0-&gt;spacy) (7.1.2)
+Requirement already satisfied: MarkupSafe&gt;=0.23 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from jinja2-&gt;spacy) (1.1.1)
+<span class="ansi-yellow-fg">⚠ As of spaCy v3.0, shortcuts like 'en' are deprecated. Please use the
+full pipeline package name 'en_core_web_sm' instead.</span>
+Collecting en-core-web-sm==3.1.0
+  Downloading https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.1.0/en_core_web_sm-3.1.0-py3-none-any.whl (13.6 MB)
+     |████████████████████████████████| 13.6 MB 7.2 MB/s 
+Requirement already satisfied: spacy&lt;3.2.0,&gt;=3.1.0 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from en-core-web-sm==3.1.0) (3.1.2)
+Requirement already satisfied: tqdm&lt;5.0.0,&gt;=4.38.0 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-sm==3.1.0) (4.59.0)
+Requirement already satisfied: cymem&lt;2.1.0,&gt;=2.0.2 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-sm==3.1.0) (2.0.5)
+Requirement already satisfied: catalogue&lt;2.1.0,&gt;=2.0.4 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-sm==3.1.0) (2.0.6)
+Requirement already satisfied: srsly&lt;3.0.0,&gt;=2.4.1 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-sm==3.1.0) (2.4.1)
+Requirement already satisfied: pathy&gt;=0.3.5 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-sm==3.1.0) (0.6.0)
+Requirement already satisfied: setuptools in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-sm==3.1.0) (52.0.0.post20210125)
+Requirement already satisfied: pydantic!=1.8,!=1.8.1,&lt;1.9.0,&gt;=1.7.4 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-sm==3.1.0) (1.8.2)
+Requirement already satisfied: packaging&gt;=20.0 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-sm==3.1.0) (20.9)
+Requirement already satisfied: preshed&lt;3.1.0,&gt;=3.0.2 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-sm==3.1.0) (3.0.5)
+Requirement already satisfied: numpy&gt;=1.15.0 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-sm==3.1.0) (1.20.1)
+Requirement already satisfied: typer&lt;0.4.0,&gt;=0.3.0 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-sm==3.1.0) (0.3.2)
+Requirement already satisfied: spacy-legacy&lt;3.1.0,&gt;=3.0.7 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-sm==3.1.0) (3.0.8)
+Requirement already satisfied: blis&lt;0.8.0,&gt;=0.4.0 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-sm==3.1.0) (0.7.4)
+Requirement already satisfied: requests&lt;3.0.0,&gt;=2.13.0 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-sm==3.1.0) (2.25.1)
+Requirement already satisfied: jinja2 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-sm==3.1.0) (2.11.3)
+Requirement already satisfied: thinc&lt;8.1.0,&gt;=8.0.8 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-sm==3.1.0) (8.0.10)
+Requirement already satisfied: murmurhash&lt;1.1.0,&gt;=0.28.0 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-sm==3.1.0) (1.0.5)
+Requirement already satisfied: wasabi&lt;1.1.0,&gt;=0.8.1 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-sm==3.1.0) (0.8.2)
+Requirement already satisfied: pyparsing&gt;=2.0.2 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from packaging&gt;=20.0-&gt;spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-sm==3.1.0) (2.4.7)
+Requirement already satisfied: smart-open&lt;6.0.0,&gt;=5.0.0 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from pathy&gt;=0.3.5-&gt;spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-sm==3.1.0) (5.2.1)
+Requirement already satisfied: typing-extensions&gt;=3.7.4.3 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from pydantic!=1.8,!=1.8.1,&lt;1.9.0,&gt;=1.7.4-&gt;spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-sm==3.1.0) (3.7.4.3)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-sm==3.1.0) (2.10)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-sm==3.1.0) (1.26.4)
+Requirement already satisfied: chardet&lt;5,&gt;=3.0.2 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-sm==3.1.0) (4.0.0)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-sm==3.1.0) (2020.12.5)
+Requirement already satisfied: click&lt;7.2.0,&gt;=7.1.1 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from typer&lt;0.4.0,&gt;=0.3.0-&gt;spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-sm==3.1.0) (7.1.2)
+Requirement already satisfied: MarkupSafe&gt;=0.23 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from jinja2-&gt;spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-sm==3.1.0) (1.1.1)
+Installing collected packages: en-core-web-sm
+Successfully installed en-core-web-sm-3.1.0
+<span class="ansi-green-fg">✔ Download and installation successful</span>
+You can now load the package via spacy.load('en_core_web_sm')
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">spacy</span>
+<span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'en_core_web_sm'</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="s2">"Tea is healthy and calming, don't you think?"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Tea
+is
+healthy
+and
+calming
+,
+do
+n't
+you
+think
+?
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>These are token objects. A token object has the lemmatization with <code>token.lemma_</code> and if it's a stop word <code>token.is_stop</code></p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Token </span><span class="se">\t\t</span><span class="s2">Lemma </span><span class="se">\t\t</span><span class="s2">Stopword"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">'Token'</span><span class="p">,</span> <span class="s1">'Lemma'</span><span class="p">,</span> <span class="s1">'Stopword'</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">token</span><span class="p">)</span><span class="si">}</span><span class="se">\t\t</span><span class="si">{</span><span class="n">token</span><span class="o">.</span><span class="n">lemma_</span><span class="si">}</span><span class="se">\t\t</span><span class="si">{</span><span class="n">token</span><span class="o">.</span><span class="n">is_stop</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Token 		Lemma 		Stopword
+----------------------------------------
+Tea		tea		False
+is		be		True
+healthy		healthy		False
+and		and		True
+calming		calm		False
+,		,		False
+do		do		True
+n't		n't		True
+you		you		True
+think		think		False
+?		?		False
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Lemmatization and Stopwords can be helpful, but also detrimental to a model's performance. Consider it as hyperparameters for tweaking the performance of a model.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Pattern-Matching">
+<a class="anchor" href="#Pattern-Matching" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pattern Matching<a class="anchor-link" href="#Pattern-Matching"> </a>
+</h2>
+<p>Spacy has pattern matching capabilities that are easier to use then Regex</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">spacy.matcher</span> <span class="kn">import</span> <span class="n">PhraseMatcher</span>
+
+<span class="n">matcher</span> <span class="o">=</span> <span class="n">PhraseMatcher</span><span class="p">(</span><span class="n">nlp</span><span class="o">.</span><span class="n">vocab</span><span class="p">,</span> <span class="n">attr</span><span class="o">=</span><span class="s1">'LOWER'</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Matchers depend on a vocabulary model, so the english model above was used. <code>attr='LOWER'</code> lowers all text ensuring case insentivity</p>
+<p>Convert the terms we need to match to documents and add to the matcher</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">terms</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Galaxy Note'</span><span class="p">,</span> <span class="s1">'iPhone 11'</span><span class="p">,</span> <span class="s1">'iPhone XS'</span><span class="p">,</span> <span class="s1">'Google Pixel'</span><span class="p">]</span>
+<span class="n">patterns</span> <span class="o">=</span> <span class="p">[</span><span class="n">nlp</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">terms</span><span class="p">]</span>
+<span class="n">matcher</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"TerminologyList"</span><span class="p">,</span> <span class="n">patterns</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">text_doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="s2">"Glowing review overall, and some really interesting side-by-side "</span>
+               <span class="s2">"photography tests pitting the iPhone 11 Pro against the "</span> 
+               <span class="s2">"Galaxy Note 10 Plus and last year's iPhone XS and Google Pixel 3."</span><span class="p">)</span>
+<span class="n">matches</span> <span class="o">=</span> <span class="n">matcher</span><span class="p">(</span><span class="n">text_doc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matches</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[(3766102292120407359, 17, 19), (3766102292120407359, 22, 24), (3766102292120407359, 30, 32), (3766102292120407359, 33, 35)]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A match is a tuple of (match_id, start_pos, end_pos)</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">match_id</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">matches</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nlp</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">strings</span><span class="p">[</span><span class="n">match_id</span><span class="p">],</span> <span class="n">text_doc</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>TerminologyList iPhone 11
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Text-Classification">
+<a class="anchor" href="#Text-Classification" aria-hidden="true"><span class="octicon octicon-link"></span></a>Text Classification<a class="anchor-link" href="#Text-Classification"> </a>
+</h2>
+<p>Machines need numeric representations of text.</p>
+<p>One way to convert a sentence or phrase to a numeric represneataiotion is to count the occurances of a word in a document
+Then the vector is the length of every word in the entire corpus. A variation of one-hot encoding.</p>
+<p>This is called <em>bag of words</em></p>
+<p>Another approach is by scaling the term count by the overall term's frequency in the corpus. The name of that representation is called TF-IDF or Term Frequency - Inverse Document Frequency</p>
+<p>spacy can support bag of words with the <code>TextCategorizer</code></p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">blank</span><span class="p">(</span><span class="s2">"en"</span><span class="p">)</span>
+
+<span class="n">textcat</span> <span class="o">=</span> <span class="n">nlp</span><span class="o">.</span><span class="n">create_pipe</span><span class="p">(</span><span class="s2">"textcat"</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{</span>
+  <span class="s2">"exclusive_classes"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+  <span class="s2">"architecture"</span><span class="p">:</span> <span class="s2">"bow"</span>
+<span class="p">})</span>
+
+<span class="n">nlp</span><span class="o">.</span><span class="n">add_pipe</span><span class="p">(</span><span class="n">textcat</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ConfigValidationError</span>                     Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-14-b892f9c822da&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> nlp <span class="ansi-blue-fg">=</span> spacy<span class="ansi-blue-fg">.</span>blank<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">"en"</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span> 
+<span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg"> textcat = nlp.create_pipe("textcat", config={
+</span><span class="ansi-green-intense-fg ansi-bold">      4</span>   <span class="ansi-blue-fg">"exclusive_classes"</span><span class="ansi-blue-fg">:</span> <span class="ansi-green-fg">True</span><span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span>   <span class="ansi-blue-fg">"architecture"</span><span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">"bow"</span>
+
+<span class="ansi-green-fg">~/opt/anaconda3/lib/python3.8/site-packages/spacy/language.py</span> in <span class="ansi-cyan-fg">create_pipe</span><span class="ansi-blue-fg">(self, factory_name, name, config, raw_config, validate)</span>
+<span class="ansi-green-intense-fg ansi-bold">    659</span>         <span class="ansi-red-fg"># We're calling the internal _fill here to avoid constructing the</span>
+<span class="ansi-green-intense-fg ansi-bold">    660</span>         <span class="ansi-red-fg"># registered functions twice</span>
+<span class="ansi-green-fg">--&gt; 661</span><span class="ansi-red-fg">         </span>resolved <span class="ansi-blue-fg">=</span> registry<span class="ansi-blue-fg">.</span>resolve<span class="ansi-blue-fg">(</span>cfg<span class="ansi-blue-fg">,</span> validate<span class="ansi-blue-fg">=</span>validate<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    662</span>         filled <span class="ansi-blue-fg">=</span> registry<span class="ansi-blue-fg">.</span>fill<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">{</span><span class="ansi-blue-fg">"cfg"</span><span class="ansi-blue-fg">:</span> cfg<span class="ansi-blue-fg">[</span>factory_name<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">}</span><span class="ansi-blue-fg">,</span> validate<span class="ansi-blue-fg">=</span>validate<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">"cfg"</span><span class="ansi-blue-fg">]</span>
+<span class="ansi-green-intense-fg ansi-bold">    663</span>         filled <span class="ansi-blue-fg">=</span> Config<span class="ansi-blue-fg">(</span>filled<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/opt/anaconda3/lib/python3.8/site-packages/thinc/config.py</span> in <span class="ansi-cyan-fg">resolve</span><span class="ansi-blue-fg">(cls, config, schema, overrides, validate)</span>
+<span class="ansi-green-intense-fg ansi-bold">    727</span>         validate<span class="ansi-blue-fg">:</span> bool <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">True</span><span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">    728</span>     ) -&gt; Dict[str, Any]:
+<span class="ansi-green-fg">--&gt; 729</span><span class="ansi-red-fg">         resolved, _ = cls._make(
+</span><span class="ansi-green-intense-fg ansi-bold">    730</span>             config<span class="ansi-blue-fg">,</span> schema<span class="ansi-blue-fg">=</span>schema<span class="ansi-blue-fg">,</span> overrides<span class="ansi-blue-fg">=</span>overrides<span class="ansi-blue-fg">,</span> validate<span class="ansi-blue-fg">=</span>validate<span class="ansi-blue-fg">,</span> resolve<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span>
+<span class="ansi-green-intense-fg ansi-bold">    731</span>         )
+
+<span class="ansi-green-fg">~/opt/anaconda3/lib/python3.8/site-packages/thinc/config.py</span> in <span class="ansi-cyan-fg">_make</span><span class="ansi-blue-fg">(cls, config, schema, overrides, resolve, validate)</span>
+<span class="ansi-green-intense-fg ansi-bold">    776</span>         <span class="ansi-green-fg">if</span> <span class="ansi-green-fg">not</span> is_interpolated<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    777</span>             config <span class="ansi-blue-fg">=</span> Config<span class="ansi-blue-fg">(</span>orig_config<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>interpolate<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">--&gt; 778</span><span class="ansi-red-fg">         filled, _, resolved = cls._fill(
+</span><span class="ansi-green-intense-fg ansi-bold">    779</span>             config<span class="ansi-blue-fg">,</span> schema<span class="ansi-blue-fg">,</span> validate<span class="ansi-blue-fg">=</span>validate<span class="ansi-blue-fg">,</span> overrides<span class="ansi-blue-fg">=</span>overrides<span class="ansi-blue-fg">,</span> resolve<span class="ansi-blue-fg">=</span>resolve
+<span class="ansi-green-intense-fg ansi-bold">    780</span>         )
+
+<span class="ansi-green-fg">~/opt/anaconda3/lib/python3.8/site-packages/thinc/config.py</span> in <span class="ansi-cyan-fg">_fill</span><span class="ansi-blue-fg">(cls, config, schema, validate, resolve, parent, overrides)</span>
+<span class="ansi-green-intense-fg ansi-bold">    831</span>                     schema<span class="ansi-blue-fg">.</span>__fields__<span class="ansi-blue-fg">[</span>key<span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> copy_model_field<span class="ansi-blue-fg">(</span>field<span class="ansi-blue-fg">,</span> Any<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    832</span>                 promise_schema <span class="ansi-blue-fg">=</span> cls<span class="ansi-blue-fg">.</span>make_promise_schema<span class="ansi-blue-fg">(</span>value<span class="ansi-blue-fg">,</span> resolve<span class="ansi-blue-fg">=</span>resolve<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">--&gt; 833</span><span class="ansi-red-fg">                 filled[key], validation[v_key], final[key] = cls._fill(
+</span><span class="ansi-green-intense-fg ansi-bold">    834</span>                     value<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">    835</span>                     promise_schema<span class="ansi-blue-fg">,</span>
+
+<span class="ansi-green-fg">~/opt/anaconda3/lib/python3.8/site-packages/thinc/config.py</span> in <span class="ansi-cyan-fg">_fill</span><span class="ansi-blue-fg">(cls, config, schema, validate, resolve, parent, overrides)</span>
+<span class="ansi-green-intense-fg ansi-bold">    897</span>                 result <span class="ansi-blue-fg">=</span> schema<span class="ansi-blue-fg">.</span>parse_obj<span class="ansi-blue-fg">(</span>validation<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    898</span>             <span class="ansi-green-fg">except</span> ValidationError <span class="ansi-green-fg">as</span> e<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 899</span><span class="ansi-red-fg">                 raise ConfigValidationError(
+</span><span class="ansi-green-intense-fg ansi-bold">    900</span>                     config<span class="ansi-blue-fg">=</span>config<span class="ansi-blue-fg">,</span> errors<span class="ansi-blue-fg">=</span>e<span class="ansi-blue-fg">.</span>errors<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span> parent<span class="ansi-blue-fg">=</span>parent
+<span class="ansi-green-intense-fg ansi-bold">    901</span>                 ) from None
+
+<span class="ansi-red-fg">ConfigValidationError</span>: 
+
+Config validation error
+
+textcat -&gt; architecture        extra fields not permitted
+textcat -&gt; exclusive_classes   extra fields not permitted
+
+{'nlp': &lt;spacy.lang.en.English object at 0x7fdf109c6fa0&gt;, 'name': 'textcat', 'architecture': 'bow', 'exclusive_classes': True, 'model': {'@architectures': 'spacy.TextCatEnsemble.v2', 'linear_model': {'@architectures': 'spacy.TextCatBOW.v2', 'exclusive_classes': True, 'ngram_size': 1, 'no_output_layer': False}, 'tok2vec': {'@architectures': 'spacy.Tok2Vec.v2', 'embed': {'@architectures': 'spacy.MultiHashEmbed.v2', 'width': 64, 'rows': [2000, 2000, 1000, 1000, 1000, 1000], 'attrs': ['ORTH', 'LOWER', 'PREFIX', 'SUFFIX', 'SHAPE', 'ID'], 'include_static_vectors': False}, 'encode': {'@architectures': 'spacy.MaxoutWindowEncoder.v2', 'width': 64, 'window_size': 1, 'maxout_pieces': 3, 'depth': 2}}}, 'threshold': 0.5, '@factories': 'textcat'}</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="adrianmoses/ml-journal"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/ml-journal/jupyter/2021/09/18/intro-to-nlp.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/ml-journal/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/ml-journal/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/ml-journal/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>ML Journal and Writings.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/adrianmoses" title="adrianmoses"><svg class="svg-icon grey"><use xlink:href="/ml-journal/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/marsmoses" title="marsmoses"><svg class="svg-icon grey"><use xlink:href="/ml-journal/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
