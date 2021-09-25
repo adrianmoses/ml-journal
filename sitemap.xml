@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://adrianmoses.github.io/ml-journal/markdown/2020/01/14/test-markdown-post.html</loc>
-<lastmod>2020-01-14T00:00:00-06:00</lastmod>
-</url>
-<url>
 <loc>https://adrianmoses.github.io/ml-journal/jupyter/2021/09/18/intro-to-nlp.html</loc>
 <lastmod>2021-09-18T00:00:00-05:00</lastmod>
 </url>
@@ -19,6 +15,10 @@
 <url>
 <loc>https://adrianmoses.github.io/ml-journal/2021/09/24/ai-and-ml-for-coders-ch2.html</loc>
 <lastmod>2021-09-24T00:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>https://adrianmoses.github.io/ml-journal/2021/09/25/ai-and-ml-for-coders-ch3.html</loc>
+<lastmod>2021-09-25T00:00:00-05:00</lastmod>
 </url>
 <url>
 <loc>https://adrianmoses.github.io/ml-journal/about/</loc>

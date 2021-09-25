@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>AI and ML for Coders Ch 3 | Adrian Moses</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="AI and ML for Coders Ch 3" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="ML Journal and Writings." />
+<meta property="og:description" content="ML Journal and Writings." />
+<link rel="canonical" href="https://adrianmoses.github.io/ml-journal/2021/09/25/ai-and-ml-for-coders-ch3.html" />
+<meta property="og:url" content="https://adrianmoses.github.io/ml-journal/2021/09/25/ai-and-ml-for-coders-ch3.html" />
+<meta property="og:site_name" content="Adrian Moses" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-09-25T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"ML Journal and Writings.","url":"https://adrianmoses.github.io/ml-journal/2021/09/25/ai-and-ml-for-coders-ch3.html","@type":"BlogPosting","headline":"AI and ML for Coders Ch 3","dateModified":"2021-09-25T00:00:00-05:00","datePublished":"2021-09-25T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://adrianmoses.github.io/ml-journal/2021/09/25/ai-and-ml-for-coders-ch3.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/ml-journal/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://adrianmoses.github.io/ml-journal/feed.xml" title="Adrian Moses" /><link rel="shortcut icon" type="image/x-icon" href="/ml-journal/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/ml-journal/">Adrian Moses</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/ml-journal/about/">About Me</a><a class="page-link" href="/ml-journal/search/">Search</a><a class="page-link" href="/ml-journal/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">AI and ML for Coders Ch 3</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-09-25T00:00:00-05:00" itemprop="datePublished">
+        Sep 25, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      26 min read
+    
+</span></p>
+
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/adrianmoses/ml-journal/tree/master/_notebooks/2021-09-25-ai-and-ml-for-coders-ch3.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/ml-journal/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/adrianmoses/ml-journal/master?filepath=_notebooks%2F2021-09-25-ai-and-ml-for-coders-ch3.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/ml-journal/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/adrianmoses/ml-journal/blob/master/_notebooks/2021-09-25-ai-and-ml-for-coders-ch3.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/ml-journal/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2021-09-25-ai-and-ml-for-coders-ch3.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A convolution is a filter of weights that can be multiplied by a pixel and it's neighbors to produe a new value of the pixel</p>
+<p>For example a 3x3 grid of pixels (center pixel and surrounding 8 pixels) could be multipled by a 3x3 filter producting a new value that will replace the center pixel value</p>
+<p>Repeate the process for every image and then a new filtered image is constructed</p>
+<p>Certain filters will provide varying resulting images. One filter applied with negative pixels on the left, zero in the middle and positive on the right will product a filtered image with nohting but vertical lines. If the negative, zero, positive was from top to bottom then all that will be left are horizatonal lines</p>
+<p>Information is removed based on the filters. We could ideally <em>learn</em> which filters reduce the image to features that are predictive for the labels.</p>
+<p>When combined with <em>pooling</em> we can reduce the amount of inof n the image while maintain the features</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Pooling">Pooling<a class="anchor-link" href="#Pooling"> </a></h3><p>Pooling involves reducing an image while retaining on the core context.</p>
+<p>*<em>Max Pooling</em> does this by grouping an image into smaller arrays and taking the max (highest) pixel value to replace the entire smaller array</p>
+<p>So a 4 x 4 array split into 2 x 2 arrays would result in 4 smaller arrays. Taking the max pixel value in each array will result in 4 pixel values that now replace the 4x4 array</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">fashion_mnist</span>
+
+<span class="p">(</span><span class="n">training_images</span><span class="p">,</span> <span class="n">training_labels</span><span class="p">),</span> <span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">)</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+
+<span class="n">training_images</span> <span class="o">=</span> <span class="n">training_images</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">60000</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">training_images</span> <span class="o">=</span> <span class="n">training_images</span> <span class="o">/</span> <span class="mf">255.0</span>
+<span class="n">test_images</span> <span class="o">=</span> <span class="n">test_images</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">test_images</span> <span class="o">=</span> <span class="n">test_images</span> <span class="o">/</span> <span class="mf">255.0</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span>
+              <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;sparse_categorical_crossentropy&#39;</span><span class="p">,</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">training_images</span><span class="p">,</span> <span class="n">training_labels</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Epoch 1/5
+1875/1875 [==============================] - 31s 17ms/step - loss: 0.4403 - accuracy: 0.8405
+Epoch 2/5
+1875/1875 [==============================] - 31s 16ms/step - loss: 0.2939 - accuracy: 0.8926
+Epoch 3/5
+1875/1875 [==============================] - 32s 17ms/step - loss: 0.2489 - accuracy: 0.9068
+Epoch 4/5
+1875/1875 [==============================] - 34s 18ms/step - loss: 0.2142 - accuracy: 0.9211
+Epoch 5/5
+1875/1875 [==============================] - 34s 18ms/step - loss: 0.1906 - accuracy: 0.9294
+313/313 [==============================] - 2s 5ms/step - loss: 0.2618 - accuracy: 0.9034
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[0.26177310943603516, 0.9034000039100647]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">classifications</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_images</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classifications</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_labels</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[3.0219702e-08 5.2809389e-12 1.6438183e-09 3.7111588e-11 1.7116486e-10
+ 3.4847562e-05 6.5400046e-10 1.6792927e-05 7.4534330e-11 9.9994838e-01]
+9
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Model: &#34;sequential_2&#34;
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d_4 (Conv2D)            (None, 26, 26, 64)        640       
+_________________________________________________________________
+max_pooling2d_4 (MaxPooling2 (None, 13, 13, 64)        0         
+_________________________________________________________________
+conv2d_5 (Conv2D)            (None, 11, 11, 64)        36928     
+_________________________________________________________________
+max_pooling2d_5 (MaxPooling2 (None, 5, 5, 64)          0         
+_________________________________________________________________
+flatten_2 (Flatten)          (None, 1600)              0         
+_________________________________________________________________
+dense_4 (Dense)              (None, 128)               204928    
+_________________________________________________________________
+dense_5 (Dense)              (None, 10)                1290      
+=================================================================
+Total params: 243,786
+Trainable params: 243,786
+Non-trainable params: 0
+_________________________________________________________________
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Notice that the total parameters increase significantly as the image size (output shape) decreases</p>
+<p>The convolutional and dense layers contain weights and biases as paremeters that are applied to each neuron</p>
+<p>for the convolutonal layers there's 64 3x3 filters. The filters have 9 weights and 1 bias</p>
+<p>So (64 * 9) + 64 = 640 parameters</p>
+<p>The second convolution will have to consider the previous 64 filters</p>
+<p>So (64 <em> (64 </em> 9)) + 64 = 36928 parameters</p>
+<p>The first dense later has to deal with a flattened 5x5 for 64 images == 1600</p>
+<p>That 1600 is then multiplied by the 128 neurons and added to the 128 biases</p>
+<p>So (1600 * 128) + 128 = 204928 parameters</p>
+<p>The final dense layer takes the output of the previous 128 and mlutiples by 10 with 10 biases</p>
+<p>(128 * 10) + 10 = 1290 parameters</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Horse-or-Humans-Dataset">Horse or Humans Dataset<a class="anchor-link" href="#Horse-or-Humans-Dataset"> </a></h3><p>Let's try a trickier dataset. One where the images are not centered and the import objects are not the same size</p>
+<p>We'll need to use the ImageDataGenerator to label the dataset as well</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">urllib.request</span>
+<span class="kn">import</span> <span class="nn">zipfile</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://storage.googleapis.com/laurencemoroney-blog.appspot.com/horse-or-human.zip&quot;</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;horse-or-human.zip&quot;</span>
+<span class="n">training_dir</span> <span class="o">=</span> <span class="s1">&#39;horse-or-human/training/&#39;</span>
+
+<span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+
+<span class="n">zip_ref</span> <span class="o">=</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">zip_ref</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">training_dir</span><span class="p">)</span>
+<span class="n">zip_ref</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow.keras.preprocessing.image</span> <span class="kn">import</span> <span class="n">ImageDataGenerator</span>
+
+<span class="c1"># All iamges will be rescaled by 1./255</span>
+
+<span class="n">train_datagen</span> <span class="o">=</span> <span class="n">ImageDataGenerator</span><span class="p">(</span><span class="n">rescale</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">255</span><span class="p">)</span>
+
+<span class="n">train_generator</span> <span class="o">=</span> <span class="n">train_datagen</span><span class="o">.</span><span class="n">flow_from_directory</span><span class="p">(</span>
+  <span class="n">training_dir</span><span class="p">,</span>
+  <span class="n">target_size</span><span class="o">=</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span>
+  <span class="n">class_mode</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Found 1027 images belonging to 2 classes.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note: Images are much larger than the MNIST dataset at 300x300</p>
+<p>They're also color images and so will have 3 channels in the third dimension</p>
+<p>Also this is a binary classifier, so we will use one output neurone to produce a number between 0 and 1</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span>
+      <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPool2D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPool2D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPool2D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPool2D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPool2D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">)</span>
+<span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Model: &#34;sequential_3&#34;
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d_7 (Conv2D)            (None, 298, 298, 16)      448       
+_________________________________________________________________
+max_pooling2d_7 (MaxPooling2 (None, 149, 149, 16)      0         
+_________________________________________________________________
+conv2d_8 (Conv2D)            (None, 147, 147, 32)      4640      
+_________________________________________________________________
+max_pooling2d_8 (MaxPooling2 (None, 73, 73, 32)        0         
+_________________________________________________________________
+conv2d_9 (Conv2D)            (None, 71, 71, 64)        18496     
+_________________________________________________________________
+max_pooling2d_9 (MaxPooling2 (None, 35, 35, 64)        0         
+_________________________________________________________________
+conv2d_10 (Conv2D)           (None, 33, 33, 64)        36928     
+_________________________________________________________________
+max_pooling2d_10 (MaxPooling (None, 16, 16, 64)        0         
+_________________________________________________________________
+conv2d_11 (Conv2D)           (None, 14, 14, 64)        36928     
+_________________________________________________________________
+max_pooling2d_11 (MaxPooling (None, 7, 7, 64)          0         
+_________________________________________________________________
+flatten_3 (Flatten)          (None, 3136)              0         
+_________________________________________________________________
+dense_6 (Dense)              (None, 512)               1606144   
+_________________________________________________________________
+dense_7 (Dense)              (None, 1)                 513       
+=================================================================
+Total params: 1,704,097
+Trainable params: 1,704,097
+Non-trainable params: 0
+_________________________________________________________________
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;binary_crossentropy&#39;</span><span class="p">,</span>
+  <span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">RMSprop</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">),</span>
+  <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages/keras/optimizer_v2/optimizer_v2.py:355: UserWarning: The `lr` argument is deprecated, use `learning_rate` instead.
+  warnings.warn(
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip install pillow
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Requirement already satisfied: pillow in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (8.2.0)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit_generator</span><span class="p">(</span><span class="n">train_generator</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages/keras/engine/training.py:1972: UserWarning: `Model.fit_generator` is deprecated and will be removed in a future version. Please use `Model.fit`, which supports generators.
+  warnings.warn(&#39;`Model.fit_generator` is deprecated and &#39;
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Epoch 1/15
+33/33 [==============================] - 23s 654ms/step - loss: 0.5953 - accuracy: 0.6981
+Epoch 2/15
+33/33 [==============================] - 21s 644ms/step - loss: 0.4123 - accuracy: 0.8958
+Epoch 3/15
+33/33 [==============================] - 22s 655ms/step - loss: 0.2618 - accuracy: 0.9416
+Epoch 4/15
+33/33 [==============================] - 21s 644ms/step - loss: 0.2222 - accuracy: 0.9572
+Epoch 5/15
+33/33 [==============================] - 22s 666ms/step - loss: 0.0559 - accuracy: 0.9766
+Epoch 6/15
+33/33 [==============================] - 32s 974ms/step - loss: 0.1055 - accuracy: 0.9805
+Epoch 7/15
+33/33 [==============================] - 29s 864ms/step - loss: 0.1530 - accuracy: 0.9796
+Epoch 8/15
+33/33 [==============================] - 26s 774ms/step - loss: 0.0030 - accuracy: 0.9990
+Epoch 9/15
+33/33 [==============================] - 24s 702ms/step - loss: 0.4676 - accuracy: 0.9698
+Epoch 10/15
+33/33 [==============================] - 24s 707ms/step - loss: 0.0101 - accuracy: 0.9971
+Epoch 11/15
+33/33 [==============================] - 31s 936ms/step - loss: 7.2553e-04 - accuracy: 1.0000
+Epoch 12/15
+33/33 [==============================] - 29s 873ms/step - loss: 0.0782 - accuracy: 0.9786
+Epoch 13/15
+33/33 [==============================] - 23s 702ms/step - loss: 0.0145 - accuracy: 0.9942
+Epoch 14/15
+33/33 [==============================] - 22s 673ms/step - loss: 4.6487e-04 - accuracy: 1.0000
+Epoch 15/15
+33/33 [==============================] - 23s 686ms/step - loss: 0.4010 - accuracy: 0.9786
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Validation">Validation<a class="anchor-link" href="#Validation"> </a></h3><p>Let's load in the validation dataset (from a separate zip) to validate the model</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">validation_url</span> <span class="o">=</span> <span class="s2">&quot;https://storage.googleapis.com/laurencemoroney-blog.appspot.com/validation-horse-or-human.zip&quot;</span>
+
+<span class="n">validation_filename</span> <span class="o">=</span> <span class="s2">&quot;validation-horse-or-human.zip&quot;</span>
+<span class="n">validation_dir</span><span class="o">=</span> <span class="s2">&quot;horse-or-human/validation&quot;</span>
+<span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">validation_url</span><span class="p">,</span> <span class="n">validation_filename</span><span class="p">)</span>
+
+<span class="n">zip_ref</span> <span class="o">=</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">validation_filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">zip_ref</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">validation_dir</span><span class="p">)</span>
+<span class="n">zip_ref</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">validation_datagen</span> <span class="o">=</span> <span class="n">ImageDataGenerator</span><span class="p">(</span><span class="n">rescale</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">255</span><span class="p">)</span>
+
+<span class="n">validation_generator</span> <span class="o">=</span> <span class="n">validation_datagen</span><span class="o">.</span><span class="n">flow_from_directory</span><span class="p">(</span>
+  <span class="n">validation_dir</span><span class="p">,</span>
+  <span class="n">target_size</span><span class="o">=</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span>
+  <span class="n">class_mode</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Found 256 images belonging to 2 classes.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hist</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit_generator</span><span class="p">(</span>
+  <span class="n">train_generator</span><span class="p">,</span>
+  <span class="n">epochs</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+  <span class="n">validation_data</span><span class="o">=</span><span class="n">validation_generator</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages/keras/engine/training.py:1972: UserWarning: `Model.fit_generator` is deprecated and will be removed in a future version. Please use `Model.fit`, which supports generators.
+  warnings.warn(&#39;`Model.fit_generator` is deprecated and &#39;
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Epoch 1/15
+33/33 [==============================] - 23s 691ms/step - loss: 4.1590e-04 - accuracy: 1.0000 - val_loss: 2.0903 - val_accuracy: 0.8398
+Epoch 2/15
+33/33 [==============================] - 23s 690ms/step - loss: 1.2791e-04 - accuracy: 1.0000 - val_loss: 2.4805 - val_accuracy: 0.8398
+Epoch 3/15
+33/33 [==============================] - 23s 689ms/step - loss: 5.3452e-06 - accuracy: 1.0000 - val_loss: 3.1825 - val_accuracy: 0.8320
+Epoch 4/15
+33/33 [==============================] - 39s 1s/step - loss: 9.1770e-07 - accuracy: 1.0000 - val_loss: 3.7376 - val_accuracy: 0.8320
+Epoch 5/15
+33/33 [==============================] - 39s 1s/step - loss: 1.8552e-07 - accuracy: 1.0000 - val_loss: 3.8860 - val_accuracy: 0.8398
+Epoch 6/15
+33/33 [==============================] - 25s 756ms/step - loss: 2.6286e-08 - accuracy: 1.0000 - val_loss: 5.2682 - val_accuracy: 0.8164
+Epoch 7/15
+33/33 [==============================] - 27s 806ms/step - loss: 0.1614 - accuracy: 0.9815 - val_loss: 2.6197 - val_accuracy: 0.8086
+Epoch 8/15
+33/33 [==============================] - 33s 1s/step - loss: 1.6330e-04 - accuracy: 1.0000 - val_loss: 3.1222 - val_accuracy: 0.8047
+Epoch 9/15
+33/33 [==============================] - 31s 927ms/step - loss: 2.2588e-05 - accuracy: 1.0000 - val_loss: 3.5960 - val_accuracy: 0.8164
+Epoch 10/15
+33/33 [==============================] - 24s 731ms/step - loss: 3.4160e-06 - accuracy: 1.0000 - val_loss: 3.5953 - val_accuracy: 0.8320
+Epoch 11/15
+33/33 [==============================] - 26s 798ms/step - loss: 7.0704e-07 - accuracy: 1.0000 - val_loss: 4.2478 - val_accuracy: 0.8203
+Epoch 12/15
+33/33 [==============================] - 25s 757ms/step - loss: 1.1522e-07 - accuracy: 1.0000 - val_loss: 4.4623 - val_accuracy: 0.8320
+Epoch 13/15
+33/33 [==============================] - 25s 751ms/step - loss: 1.7506e-08 - accuracy: 1.0000 - val_loss: 4.9719 - val_accuracy: 0.8281
+Epoch 14/15
+33/33 [==============================] - 24s 733ms/step - loss: 0.4476 - accuracy: 0.9805 - val_loss: 2.5337 - val_accuracy: 0.7969
+Epoch 15/15
+33/33 [==============================] - 24s 730ms/step - loss: 0.0419 - accuracy: 0.9854 - val_loss: 3.1517 - val_accuracy: 0.7891
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Test out this model in Colab. Here's the <a href="http://bit.ly/horsehuman">Github Link</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Image-Augmentation">Image Augmentation<a class="anchor-link" href="#Image-Augmentation"> </a></h2><p>The images are CGI and perform decently well on real images. However it still misclassifies on images where humans or horses are positioned in ways the model hasn't seen yet.</p>
+<p>Image augmentation can be a way to transform images in a way to better handle different use cases. with the <code>ImageDataGenerator</code> you can peform many taransforms</p>
+<div class="highlight"><pre><span></span><span class="n">train_datagen</span> <span class="o">=</span> <span class="n">ImageDataGenerator</span><span class="p">(</span>
+  <span class="n">rescale</span><span class="o">=</span><span class="mf">1.</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span>
+  <span class="n">rotation_range</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
+  <span class="n">width_shift_range</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+  <span class="n">shear_range</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+  <span class="n">zoom_range</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+  <span class="n">horizontal_flip</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+  <span class="n">fill_mode</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span>
+<span class="p">)</span>
+</pre></div>
+<p>This covers the common transformations</p>
+<ul>
+<li>Rotation (randoming up to 40 degress left or right)</li>
+<li>Shifting horizontally (up to 20%)</li>
+<li>Shifting vertically (up to 20%)</li>
+<li>Shearing (by up to 20%)</li>
+<li>Zooming (by up to 20%)</li>
+<li>Flipping (randomly horizontally or vertically)</li>
+<li>Filling in any missing pixelas after a move or shear with nearest neihbors</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Transfer-Learning">Transfer Learning<a class="anchor-link" href="#Transfer-Learning"> </a></h2><p>What if we used a large model trained on many more features and parameters and fine tuned it for our use case?</p>
+<p>Let's try this out with Inception version 3. A large model trained on ImageNet</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow.keras.applications.inception_v3</span> <span class="kn">import</span> <span class="n">InceptionV3</span>
+
+<span class="n">weights_url</span> <span class="o">=</span> <span class="s2">&quot;https://storage.googleapis.com/mledu-datasets/inception_v3_weights_tf_dim_ordering_tf_kernels_notop.h5&quot;</span>
+
+<span class="n">weights_file</span> <span class="o">=</span> <span class="s2">&quot;inception_v3.h5&quot;</span>
+<span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">weights_url</span><span class="p">,</span> <span class="n">weights_file</span><span class="p">)</span>
+
+<span class="n">pre_trained_model</span> <span class="o">=</span> <span class="n">InceptionV3</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+  <span class="n">include_top</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+  <span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="n">pre_trained_model</span><span class="o">.</span><span class="n">load_weights</span><span class="p">(</span><span class="n">weights_file</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pre_trained_model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Model: &#34;inception_v3&#34;
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, 150, 150, 3) 0                                            
+__________________________________________________________________________________________________
+conv2d_12 (Conv2D)              (None, 74, 74, 32)   864         input_1[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization (BatchNorma (None, 74, 74, 32)   96          conv2d_12[0][0]                  
+__________________________________________________________________________________________________
+activation (Activation)         (None, 74, 74, 32)   0           batch_normalization[0][0]        
+__________________________________________________________________________________________________
+conv2d_13 (Conv2D)              (None, 72, 72, 32)   9216        activation[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 72, 72, 32)   96          conv2d_13[0][0]                  
+__________________________________________________________________________________________________
+activation_1 (Activation)       (None, 72, 72, 32)   0           batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+conv2d_14 (Conv2D)              (None, 72, 72, 64)   18432       activation_1[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 72, 72, 64)   192         conv2d_14[0][0]                  
+__________________________________________________________________________________________________
+activation_2 (Activation)       (None, 72, 72, 64)   0           batch_normalization_2[0][0]      
+__________________________________________________________________________________________________
+max_pooling2d_12 (MaxPooling2D) (None, 35, 35, 64)   0           activation_2[0][0]               
+__________________________________________________________________________________________________
+conv2d_15 (Conv2D)              (None, 35, 35, 80)   5120        max_pooling2d_12[0][0]           
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 35, 35, 80)   240         conv2d_15[0][0]                  
+__________________________________________________________________________________________________
+activation_3 (Activation)       (None, 35, 35, 80)   0           batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+conv2d_16 (Conv2D)              (None, 33, 33, 192)  138240      activation_3[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 33, 33, 192)  576         conv2d_16[0][0]                  
+__________________________________________________________________________________________________
+activation_4 (Activation)       (None, 33, 33, 192)  0           batch_normalization_4[0][0]      
+__________________________________________________________________________________________________
+max_pooling2d_13 (MaxPooling2D) (None, 16, 16, 192)  0           activation_4[0][0]               
+__________________________________________________________________________________________________
+conv2d_20 (Conv2D)              (None, 16, 16, 64)   12288       max_pooling2d_13[0][0]           
+__________________________________________________________________________________________________
+batch_normalization_8 (BatchNor (None, 16, 16, 64)   192         conv2d_20[0][0]                  
+__________________________________________________________________________________________________
+activation_8 (Activation)       (None, 16, 16, 64)   0           batch_normalization_8[0][0]      
+__________________________________________________________________________________________________
+conv2d_18 (Conv2D)              (None, 16, 16, 48)   9216        max_pooling2d_13[0][0]           
+__________________________________________________________________________________________________
+conv2d_21 (Conv2D)              (None, 16, 16, 96)   55296       activation_8[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 16, 16, 48)   144         conv2d_18[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_9 (BatchNor (None, 16, 16, 96)   288         conv2d_21[0][0]                  
+__________________________________________________________________________________________________
+activation_6 (Activation)       (None, 16, 16, 48)   0           batch_normalization_6[0][0]      
+__________________________________________________________________________________________________
+activation_9 (Activation)       (None, 16, 16, 96)   0           batch_normalization_9[0][0]      
+__________________________________________________________________________________________________
+average_pooling2d (AveragePooli (None, 16, 16, 192)  0           max_pooling2d_13[0][0]           
+__________________________________________________________________________________________________
+conv2d_17 (Conv2D)              (None, 16, 16, 64)   12288       max_pooling2d_13[0][0]           
+__________________________________________________________________________________________________
+conv2d_19 (Conv2D)              (None, 16, 16, 64)   76800       activation_6[0][0]               
+__________________________________________________________________________________________________
+conv2d_22 (Conv2D)              (None, 16, 16, 96)   82944       activation_9[0][0]               
+__________________________________________________________________________________________________
+conv2d_23 (Conv2D)              (None, 16, 16, 32)   6144        average_pooling2d[0][0]          
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 16, 16, 64)   192         conv2d_17[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_7 (BatchNor (None, 16, 16, 64)   192         conv2d_19[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_10 (BatchNo (None, 16, 16, 96)   288         conv2d_22[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_11 (BatchNo (None, 16, 16, 32)   96          conv2d_23[0][0]                  
+__________________________________________________________________________________________________
+activation_5 (Activation)       (None, 16, 16, 64)   0           batch_normalization_5[0][0]      
+__________________________________________________________________________________________________
+activation_7 (Activation)       (None, 16, 16, 64)   0           batch_normalization_7[0][0]      
+__________________________________________________________________________________________________
+activation_10 (Activation)      (None, 16, 16, 96)   0           batch_normalization_10[0][0]     
+__________________________________________________________________________________________________
+activation_11 (Activation)      (None, 16, 16, 32)   0           batch_normalization_11[0][0]     
+__________________________________________________________________________________________________
+mixed0 (Concatenate)            (None, 16, 16, 256)  0           activation_5[0][0]               
+                                                                 activation_7[0][0]               
+                                                                 activation_10[0][0]              
+                                                                 activation_11[0][0]              
+__________________________________________________________________________________________________
+conv2d_27 (Conv2D)              (None, 16, 16, 64)   16384       mixed0[0][0]                     
+__________________________________________________________________________________________________
+batch_normalization_15 (BatchNo (None, 16, 16, 64)   192         conv2d_27[0][0]                  
+__________________________________________________________________________________________________
+activation_15 (Activation)      (None, 16, 16, 64)   0           batch_normalization_15[0][0]     
+__________________________________________________________________________________________________
+conv2d_25 (Conv2D)              (None, 16, 16, 48)   12288       mixed0[0][0]                     
+__________________________________________________________________________________________________
+conv2d_28 (Conv2D)              (None, 16, 16, 96)   55296       activation_15[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_13 (BatchNo (None, 16, 16, 48)   144         conv2d_25[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_16 (BatchNo (None, 16, 16, 96)   288         conv2d_28[0][0]                  
+__________________________________________________________________________________________________
+activation_13 (Activation)      (None, 16, 16, 48)   0           batch_normalization_13[0][0]     
+__________________________________________________________________________________________________
+activation_16 (Activation)      (None, 16, 16, 96)   0           batch_normalization_16[0][0]     
+__________________________________________________________________________________________________
+average_pooling2d_1 (AveragePoo (None, 16, 16, 256)  0           mixed0[0][0]                     
+__________________________________________________________________________________________________
+conv2d_24 (Conv2D)              (None, 16, 16, 64)   16384       mixed0[0][0]                     
+__________________________________________________________________________________________________
+conv2d_26 (Conv2D)              (None, 16, 16, 64)   76800       activation_13[0][0]              
+__________________________________________________________________________________________________
+conv2d_29 (Conv2D)              (None, 16, 16, 96)   82944       activation_16[0][0]              
+__________________________________________________________________________________________________
+conv2d_30 (Conv2D)              (None, 16, 16, 64)   16384       average_pooling2d_1[0][0]        
+__________________________________________________________________________________________________
+batch_normalization_12 (BatchNo (None, 16, 16, 64)   192         conv2d_24[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_14 (BatchNo (None, 16, 16, 64)   192         conv2d_26[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_17 (BatchNo (None, 16, 16, 96)   288         conv2d_29[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_18 (BatchNo (None, 16, 16, 64)   192         conv2d_30[0][0]                  
+__________________________________________________________________________________________________
+activation_12 (Activation)      (None, 16, 16, 64)   0           batch_normalization_12[0][0]     
+__________________________________________________________________________________________________
+activation_14 (Activation)      (None, 16, 16, 64)   0           batch_normalization_14[0][0]     
+__________________________________________________________________________________________________
+activation_17 (Activation)      (None, 16, 16, 96)   0           batch_normalization_17[0][0]     
+__________________________________________________________________________________________________
+activation_18 (Activation)      (None, 16, 16, 64)   0           batch_normalization_18[0][0]     
+__________________________________________________________________________________________________
+mixed1 (Concatenate)            (None, 16, 16, 288)  0           activation_12[0][0]              
+                                                                 activation_14[0][0]              
+                                                                 activation_17[0][0]              
+                                                                 activation_18[0][0]              
+__________________________________________________________________________________________________
+conv2d_34 (Conv2D)              (None, 16, 16, 64)   18432       mixed1[0][0]                     
+__________________________________________________________________________________________________
+batch_normalization_22 (BatchNo (None, 16, 16, 64)   192         conv2d_34[0][0]                  
+__________________________________________________________________________________________________
+activation_22 (Activation)      (None, 16, 16, 64)   0           batch_normalization_22[0][0]     
+__________________________________________________________________________________________________
+conv2d_32 (Conv2D)              (None, 16, 16, 48)   13824       mixed1[0][0]                     
+__________________________________________________________________________________________________
+conv2d_35 (Conv2D)              (None, 16, 16, 96)   55296       activation_22[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_20 (BatchNo (None, 16, 16, 48)   144         conv2d_32[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_23 (BatchNo (None, 16, 16, 96)   288         conv2d_35[0][0]                  
+__________________________________________________________________________________________________
+activation_20 (Activation)      (None, 16, 16, 48)   0           batch_normalization_20[0][0]     
+__________________________________________________________________________________________________
+activation_23 (Activation)      (None, 16, 16, 96)   0           batch_normalization_23[0][0]     
+__________________________________________________________________________________________________
+average_pooling2d_2 (AveragePoo (None, 16, 16, 288)  0           mixed1[0][0]                     
+__________________________________________________________________________________________________
+conv2d_31 (Conv2D)              (None, 16, 16, 64)   18432       mixed1[0][0]                     
+__________________________________________________________________________________________________
+conv2d_33 (Conv2D)              (None, 16, 16, 64)   76800       activation_20[0][0]              
+__________________________________________________________________________________________________
+conv2d_36 (Conv2D)              (None, 16, 16, 96)   82944       activation_23[0][0]              
+__________________________________________________________________________________________________
+conv2d_37 (Conv2D)              (None, 16, 16, 64)   18432       average_pooling2d_2[0][0]        
+__________________________________________________________________________________________________
+batch_normalization_19 (BatchNo (None, 16, 16, 64)   192         conv2d_31[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_21 (BatchNo (None, 16, 16, 64)   192         conv2d_33[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_24 (BatchNo (None, 16, 16, 96)   288         conv2d_36[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_25 (BatchNo (None, 16, 16, 64)   192         conv2d_37[0][0]                  
+__________________________________________________________________________________________________
+activation_19 (Activation)      (None, 16, 16, 64)   0           batch_normalization_19[0][0]     
+__________________________________________________________________________________________________
+activation_21 (Activation)      (None, 16, 16, 64)   0           batch_normalization_21[0][0]     
+__________________________________________________________________________________________________
+activation_24 (Activation)      (None, 16, 16, 96)   0           batch_normalization_24[0][0]     
+__________________________________________________________________________________________________
+activation_25 (Activation)      (None, 16, 16, 64)   0           batch_normalization_25[0][0]     
+__________________________________________________________________________________________________
+mixed2 (Concatenate)            (None, 16, 16, 288)  0           activation_19[0][0]              
+                                                                 activation_21[0][0]              
+                                                                 activation_24[0][0]              
+                                                                 activation_25[0][0]              
+__________________________________________________________________________________________________
+conv2d_39 (Conv2D)              (None, 16, 16, 64)   18432       mixed2[0][0]                     
+__________________________________________________________________________________________________
+batch_normalization_27 (BatchNo (None, 16, 16, 64)   192         conv2d_39[0][0]                  
+__________________________________________________________________________________________________
+activation_27 (Activation)      (None, 16, 16, 64)   0           batch_normalization_27[0][0]     
+__________________________________________________________________________________________________
+conv2d_40 (Conv2D)              (None, 16, 16, 96)   55296       activation_27[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_28 (BatchNo (None, 16, 16, 96)   288         conv2d_40[0][0]                  
+__________________________________________________________________________________________________
+activation_28 (Activation)      (None, 16, 16, 96)   0           batch_normalization_28[0][0]     
+__________________________________________________________________________________________________
+conv2d_38 (Conv2D)              (None, 7, 7, 384)    995328      mixed2[0][0]                     
+__________________________________________________________________________________________________
+conv2d_41 (Conv2D)              (None, 7, 7, 96)     82944       activation_28[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_26 (BatchNo (None, 7, 7, 384)    1152        conv2d_38[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_29 (BatchNo (None, 7, 7, 96)     288         conv2d_41[0][0]                  
+__________________________________________________________________________________________________
+activation_26 (Activation)      (None, 7, 7, 384)    0           batch_normalization_26[0][0]     
+__________________________________________________________________________________________________
+activation_29 (Activation)      (None, 7, 7, 96)     0           batch_normalization_29[0][0]     
+__________________________________________________________________________________________________
+max_pooling2d_14 (MaxPooling2D) (None, 7, 7, 288)    0           mixed2[0][0]                     
+__________________________________________________________________________________________________
+mixed3 (Concatenate)            (None, 7, 7, 768)    0           activation_26[0][0]              
+                                                                 activation_29[0][0]              
+                                                                 max_pooling2d_14[0][0]           
+__________________________________________________________________________________________________
+conv2d_46 (Conv2D)              (None, 7, 7, 128)    98304       mixed3[0][0]                     
+__________________________________________________________________________________________________
+batch_normalization_34 (BatchNo (None, 7, 7, 128)    384         conv2d_46[0][0]                  
+__________________________________________________________________________________________________
+activation_34 (Activation)      (None, 7, 7, 128)    0           batch_normalization_34[0][0]     
+__________________________________________________________________________________________________
+conv2d_47 (Conv2D)              (None, 7, 7, 128)    114688      activation_34[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_35 (BatchNo (None, 7, 7, 128)    384         conv2d_47[0][0]                  
+__________________________________________________________________________________________________
+activation_35 (Activation)      (None, 7, 7, 128)    0           batch_normalization_35[0][0]     
+__________________________________________________________________________________________________
+conv2d_43 (Conv2D)              (None, 7, 7, 128)    98304       mixed3[0][0]                     
+__________________________________________________________________________________________________
+conv2d_48 (Conv2D)              (None, 7, 7, 128)    114688      activation_35[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_31 (BatchNo (None, 7, 7, 128)    384         conv2d_43[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_36 (BatchNo (None, 7, 7, 128)    384         conv2d_48[0][0]                  
+__________________________________________________________________________________________________
+activation_31 (Activation)      (None, 7, 7, 128)    0           batch_normalization_31[0][0]     
+__________________________________________________________________________________________________
+activation_36 (Activation)      (None, 7, 7, 128)    0           batch_normalization_36[0][0]     
+__________________________________________________________________________________________________
+conv2d_44 (Conv2D)              (None, 7, 7, 128)    114688      activation_31[0][0]              
+__________________________________________________________________________________________________
+conv2d_49 (Conv2D)              (None, 7, 7, 128)    114688      activation_36[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_32 (BatchNo (None, 7, 7, 128)    384         conv2d_44[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_37 (BatchNo (None, 7, 7, 128)    384         conv2d_49[0][0]                  
+__________________________________________________________________________________________________
+activation_32 (Activation)      (None, 7, 7, 128)    0           batch_normalization_32[0][0]     
+__________________________________________________________________________________________________
+activation_37 (Activation)      (None, 7, 7, 128)    0           batch_normalization_37[0][0]     
+__________________________________________________________________________________________________
+average_pooling2d_3 (AveragePoo (None, 7, 7, 768)    0           mixed3[0][0]                     
+__________________________________________________________________________________________________
+conv2d_42 (Conv2D)              (None, 7, 7, 192)    147456      mixed3[0][0]                     
+__________________________________________________________________________________________________
+conv2d_45 (Conv2D)              (None, 7, 7, 192)    172032      activation_32[0][0]              
+__________________________________________________________________________________________________
+conv2d_50 (Conv2D)              (None, 7, 7, 192)    172032      activation_37[0][0]              
+__________________________________________________________________________________________________
+conv2d_51 (Conv2D)              (None, 7, 7, 192)    147456      average_pooling2d_3[0][0]        
+__________________________________________________________________________________________________
+batch_normalization_30 (BatchNo (None, 7, 7, 192)    576         conv2d_42[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_33 (BatchNo (None, 7, 7, 192)    576         conv2d_45[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_38 (BatchNo (None, 7, 7, 192)    576         conv2d_50[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_39 (BatchNo (None, 7, 7, 192)    576         conv2d_51[0][0]                  
+__________________________________________________________________________________________________
+activation_30 (Activation)      (None, 7, 7, 192)    0           batch_normalization_30[0][0]     
+__________________________________________________________________________________________________
+activation_33 (Activation)      (None, 7, 7, 192)    0           batch_normalization_33[0][0]     
+__________________________________________________________________________________________________
+activation_38 (Activation)      (None, 7, 7, 192)    0           batch_normalization_38[0][0]     
+__________________________________________________________________________________________________
+activation_39 (Activation)      (None, 7, 7, 192)    0           batch_normalization_39[0][0]     
+__________________________________________________________________________________________________
+mixed4 (Concatenate)            (None, 7, 7, 768)    0           activation_30[0][0]              
+                                                                 activation_33[0][0]              
+                                                                 activation_38[0][0]              
+                                                                 activation_39[0][0]              
+__________________________________________________________________________________________________
+conv2d_56 (Conv2D)              (None, 7, 7, 160)    122880      mixed4[0][0]                     
+__________________________________________________________________________________________________
+batch_normalization_44 (BatchNo (None, 7, 7, 160)    480         conv2d_56[0][0]                  
+__________________________________________________________________________________________________
+activation_44 (Activation)      (None, 7, 7, 160)    0           batch_normalization_44[0][0]     
+__________________________________________________________________________________________________
+conv2d_57 (Conv2D)              (None, 7, 7, 160)    179200      activation_44[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_45 (BatchNo (None, 7, 7, 160)    480         conv2d_57[0][0]                  
+__________________________________________________________________________________________________
+activation_45 (Activation)      (None, 7, 7, 160)    0           batch_normalization_45[0][0]     
+__________________________________________________________________________________________________
+conv2d_53 (Conv2D)              (None, 7, 7, 160)    122880      mixed4[0][0]                     
+__________________________________________________________________________________________________
+conv2d_58 (Conv2D)              (None, 7, 7, 160)    179200      activation_45[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_41 (BatchNo (None, 7, 7, 160)    480         conv2d_53[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_46 (BatchNo (None, 7, 7, 160)    480         conv2d_58[0][0]                  
+__________________________________________________________________________________________________
+activation_41 (Activation)      (None, 7, 7, 160)    0           batch_normalization_41[0][0]     
+__________________________________________________________________________________________________
+activation_46 (Activation)      (None, 7, 7, 160)    0           batch_normalization_46[0][0]     
+__________________________________________________________________________________________________
+conv2d_54 (Conv2D)              (None, 7, 7, 160)    179200      activation_41[0][0]              
+__________________________________________________________________________________________________
+conv2d_59 (Conv2D)              (None, 7, 7, 160)    179200      activation_46[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_42 (BatchNo (None, 7, 7, 160)    480         conv2d_54[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_47 (BatchNo (None, 7, 7, 160)    480         conv2d_59[0][0]                  
+__________________________________________________________________________________________________
+activation_42 (Activation)      (None, 7, 7, 160)    0           batch_normalization_42[0][0]     
+__________________________________________________________________________________________________
+activation_47 (Activation)      (None, 7, 7, 160)    0           batch_normalization_47[0][0]     
+__________________________________________________________________________________________________
+average_pooling2d_4 (AveragePoo (None, 7, 7, 768)    0           mixed4[0][0]                     
+__________________________________________________________________________________________________
+conv2d_52 (Conv2D)              (None, 7, 7, 192)    147456      mixed4[0][0]                     
+__________________________________________________________________________________________________
+conv2d_55 (Conv2D)              (None, 7, 7, 192)    215040      activation_42[0][0]              
+__________________________________________________________________________________________________
+conv2d_60 (Conv2D)              (None, 7, 7, 192)    215040      activation_47[0][0]              
+__________________________________________________________________________________________________
+conv2d_61 (Conv2D)              (None, 7, 7, 192)    147456      average_pooling2d_4[0][0]        
+__________________________________________________________________________________________________
+batch_normalization_40 (BatchNo (None, 7, 7, 192)    576         conv2d_52[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_43 (BatchNo (None, 7, 7, 192)    576         conv2d_55[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_48 (BatchNo (None, 7, 7, 192)    576         conv2d_60[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_49 (BatchNo (None, 7, 7, 192)    576         conv2d_61[0][0]                  
+__________________________________________________________________________________________________
+activation_40 (Activation)      (None, 7, 7, 192)    0           batch_normalization_40[0][0]     
+__________________________________________________________________________________________________
+activation_43 (Activation)      (None, 7, 7, 192)    0           batch_normalization_43[0][0]     
+__________________________________________________________________________________________________
+activation_48 (Activation)      (None, 7, 7, 192)    0           batch_normalization_48[0][0]     
+__________________________________________________________________________________________________
+activation_49 (Activation)      (None, 7, 7, 192)    0           batch_normalization_49[0][0]     
+__________________________________________________________________________________________________
+mixed5 (Concatenate)            (None, 7, 7, 768)    0           activation_40[0][0]              
+                                                                 activation_43[0][0]              
+                                                                 activation_48[0][0]              
+                                                                 activation_49[0][0]              
+__________________________________________________________________________________________________
+conv2d_66 (Conv2D)              (None, 7, 7, 160)    122880      mixed5[0][0]                     
+__________________________________________________________________________________________________
+batch_normalization_54 (BatchNo (None, 7, 7, 160)    480         conv2d_66[0][0]                  
+__________________________________________________________________________________________________
+activation_54 (Activation)      (None, 7, 7, 160)    0           batch_normalization_54[0][0]     
+__________________________________________________________________________________________________
+conv2d_67 (Conv2D)              (None, 7, 7, 160)    179200      activation_54[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_55 (BatchNo (None, 7, 7, 160)    480         conv2d_67[0][0]                  
+__________________________________________________________________________________________________
+activation_55 (Activation)      (None, 7, 7, 160)    0           batch_normalization_55[0][0]     
+__________________________________________________________________________________________________
+conv2d_63 (Conv2D)              (None, 7, 7, 160)    122880      mixed5[0][0]                     
+__________________________________________________________________________________________________
+conv2d_68 (Conv2D)              (None, 7, 7, 160)    179200      activation_55[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_51 (BatchNo (None, 7, 7, 160)    480         conv2d_63[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_56 (BatchNo (None, 7, 7, 160)    480         conv2d_68[0][0]                  
+__________________________________________________________________________________________________
+activation_51 (Activation)      (None, 7, 7, 160)    0           batch_normalization_51[0][0]     
+__________________________________________________________________________________________________
+activation_56 (Activation)      (None, 7, 7, 160)    0           batch_normalization_56[0][0]     
+__________________________________________________________________________________________________
+conv2d_64 (Conv2D)              (None, 7, 7, 160)    179200      activation_51[0][0]              
+__________________________________________________________________________________________________
+conv2d_69 (Conv2D)              (None, 7, 7, 160)    179200      activation_56[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_52 (BatchNo (None, 7, 7, 160)    480         conv2d_64[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_57 (BatchNo (None, 7, 7, 160)    480         conv2d_69[0][0]                  
+__________________________________________________________________________________________________
+activation_52 (Activation)      (None, 7, 7, 160)    0           batch_normalization_52[0][0]     
+__________________________________________________________________________________________________
+activation_57 (Activation)      (None, 7, 7, 160)    0           batch_normalization_57[0][0]     
+__________________________________________________________________________________________________
+average_pooling2d_5 (AveragePoo (None, 7, 7, 768)    0           mixed5[0][0]                     
+__________________________________________________________________________________________________
+conv2d_62 (Conv2D)              (None, 7, 7, 192)    147456      mixed5[0][0]                     
+__________________________________________________________________________________________________
+conv2d_65 (Conv2D)              (None, 7, 7, 192)    215040      activation_52[0][0]              
+__________________________________________________________________________________________________
+conv2d_70 (Conv2D)              (None, 7, 7, 192)    215040      activation_57[0][0]              
+__________________________________________________________________________________________________
+conv2d_71 (Conv2D)              (None, 7, 7, 192)    147456      average_pooling2d_5[0][0]        
+__________________________________________________________________________________________________
+batch_normalization_50 (BatchNo (None, 7, 7, 192)    576         conv2d_62[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_53 (BatchNo (None, 7, 7, 192)    576         conv2d_65[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_58 (BatchNo (None, 7, 7, 192)    576         conv2d_70[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_59 (BatchNo (None, 7, 7, 192)    576         conv2d_71[0][0]                  
+__________________________________________________________________________________________________
+activation_50 (Activation)      (None, 7, 7, 192)    0           batch_normalization_50[0][0]     
+__________________________________________________________________________________________________
+activation_53 (Activation)      (None, 7, 7, 192)    0           batch_normalization_53[0][0]     
+__________________________________________________________________________________________________
+activation_58 (Activation)      (None, 7, 7, 192)    0           batch_normalization_58[0][0]     
+__________________________________________________________________________________________________
+activation_59 (Activation)      (None, 7, 7, 192)    0           batch_normalization_59[0][0]     
+__________________________________________________________________________________________________
+mixed6 (Concatenate)            (None, 7, 7, 768)    0           activation_50[0][0]              
+                                                                 activation_53[0][0]              
+                                                                 activation_58[0][0]              
+                                                                 activation_59[0][0]              
+__________________________________________________________________________________________________
+conv2d_76 (Conv2D)              (None, 7, 7, 192)    147456      mixed6[0][0]                     
+__________________________________________________________________________________________________
+batch_normalization_64 (BatchNo (None, 7, 7, 192)    576         conv2d_76[0][0]                  
+__________________________________________________________________________________________________
+activation_64 (Activation)      (None, 7, 7, 192)    0           batch_normalization_64[0][0]     
+__________________________________________________________________________________________________
+conv2d_77 (Conv2D)              (None, 7, 7, 192)    258048      activation_64[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_65 (BatchNo (None, 7, 7, 192)    576         conv2d_77[0][0]                  
+__________________________________________________________________________________________________
+activation_65 (Activation)      (None, 7, 7, 192)    0           batch_normalization_65[0][0]     
+__________________________________________________________________________________________________
+conv2d_73 (Conv2D)              (None, 7, 7, 192)    147456      mixed6[0][0]                     
+__________________________________________________________________________________________________
+conv2d_78 (Conv2D)              (None, 7, 7, 192)    258048      activation_65[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_61 (BatchNo (None, 7, 7, 192)    576         conv2d_73[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_66 (BatchNo (None, 7, 7, 192)    576         conv2d_78[0][0]                  
+__________________________________________________________________________________________________
+activation_61 (Activation)      (None, 7, 7, 192)    0           batch_normalization_61[0][0]     
+__________________________________________________________________________________________________
+activation_66 (Activation)      (None, 7, 7, 192)    0           batch_normalization_66[0][0]     
+__________________________________________________________________________________________________
+conv2d_74 (Conv2D)              (None, 7, 7, 192)    258048      activation_61[0][0]              
+__________________________________________________________________________________________________
+conv2d_79 (Conv2D)              (None, 7, 7, 192)    258048      activation_66[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_62 (BatchNo (None, 7, 7, 192)    576         conv2d_74[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_67 (BatchNo (None, 7, 7, 192)    576         conv2d_79[0][0]                  
+__________________________________________________________________________________________________
+activation_62 (Activation)      (None, 7, 7, 192)    0           batch_normalization_62[0][0]     
+__________________________________________________________________________________________________
+activation_67 (Activation)      (None, 7, 7, 192)    0           batch_normalization_67[0][0]     
+__________________________________________________________________________________________________
+average_pooling2d_6 (AveragePoo (None, 7, 7, 768)    0           mixed6[0][0]                     
+__________________________________________________________________________________________________
+conv2d_72 (Conv2D)              (None, 7, 7, 192)    147456      mixed6[0][0]                     
+__________________________________________________________________________________________________
+conv2d_75 (Conv2D)              (None, 7, 7, 192)    258048      activation_62[0][0]              
+__________________________________________________________________________________________________
+conv2d_80 (Conv2D)              (None, 7, 7, 192)    258048      activation_67[0][0]              
+__________________________________________________________________________________________________
+conv2d_81 (Conv2D)              (None, 7, 7, 192)    147456      average_pooling2d_6[0][0]        
+__________________________________________________________________________________________________
+batch_normalization_60 (BatchNo (None, 7, 7, 192)    576         conv2d_72[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_63 (BatchNo (None, 7, 7, 192)    576         conv2d_75[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_68 (BatchNo (None, 7, 7, 192)    576         conv2d_80[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_69 (BatchNo (None, 7, 7, 192)    576         conv2d_81[0][0]                  
+__________________________________________________________________________________________________
+activation_60 (Activation)      (None, 7, 7, 192)    0           batch_normalization_60[0][0]     
+__________________________________________________________________________________________________
+activation_63 (Activation)      (None, 7, 7, 192)    0           batch_normalization_63[0][0]     
+__________________________________________________________________________________________________
+activation_68 (Activation)      (None, 7, 7, 192)    0           batch_normalization_68[0][0]     
+__________________________________________________________________________________________________
+activation_69 (Activation)      (None, 7, 7, 192)    0           batch_normalization_69[0][0]     
+__________________________________________________________________________________________________
+mixed7 (Concatenate)            (None, 7, 7, 768)    0           activation_60[0][0]              
+                                                                 activation_63[0][0]              
+                                                                 activation_68[0][0]              
+                                                                 activation_69[0][0]              
+__________________________________________________________________________________________________
+conv2d_84 (Conv2D)              (None, 7, 7, 192)    147456      mixed7[0][0]                     
+__________________________________________________________________________________________________
+batch_normalization_72 (BatchNo (None, 7, 7, 192)    576         conv2d_84[0][0]                  
+__________________________________________________________________________________________________
+activation_72 (Activation)      (None, 7, 7, 192)    0           batch_normalization_72[0][0]     
+__________________________________________________________________________________________________
+conv2d_85 (Conv2D)              (None, 7, 7, 192)    258048      activation_72[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_73 (BatchNo (None, 7, 7, 192)    576         conv2d_85[0][0]                  
+__________________________________________________________________________________________________
+activation_73 (Activation)      (None, 7, 7, 192)    0           batch_normalization_73[0][0]     
+__________________________________________________________________________________________________
+conv2d_82 (Conv2D)              (None, 7, 7, 192)    147456      mixed7[0][0]                     
+__________________________________________________________________________________________________
+conv2d_86 (Conv2D)              (None, 7, 7, 192)    258048      activation_73[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_70 (BatchNo (None, 7, 7, 192)    576         conv2d_82[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_74 (BatchNo (None, 7, 7, 192)    576         conv2d_86[0][0]                  
+__________________________________________________________________________________________________
+activation_70 (Activation)      (None, 7, 7, 192)    0           batch_normalization_70[0][0]     
+__________________________________________________________________________________________________
+activation_74 (Activation)      (None, 7, 7, 192)    0           batch_normalization_74[0][0]     
+__________________________________________________________________________________________________
+conv2d_83 (Conv2D)              (None, 3, 3, 320)    552960      activation_70[0][0]              
+__________________________________________________________________________________________________
+conv2d_87 (Conv2D)              (None, 3, 3, 192)    331776      activation_74[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_71 (BatchNo (None, 3, 3, 320)    960         conv2d_83[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_75 (BatchNo (None, 3, 3, 192)    576         conv2d_87[0][0]                  
+__________________________________________________________________________________________________
+activation_71 (Activation)      (None, 3, 3, 320)    0           batch_normalization_71[0][0]     
+__________________________________________________________________________________________________
+activation_75 (Activation)      (None, 3, 3, 192)    0           batch_normalization_75[0][0]     
+__________________________________________________________________________________________________
+max_pooling2d_15 (MaxPooling2D) (None, 3, 3, 768)    0           mixed7[0][0]                     
+__________________________________________________________________________________________________
+mixed8 (Concatenate)            (None, 3, 3, 1280)   0           activation_71[0][0]              
+                                                                 activation_75[0][0]              
+                                                                 max_pooling2d_15[0][0]           
+__________________________________________________________________________________________________
+conv2d_92 (Conv2D)              (None, 3, 3, 448)    573440      mixed8[0][0]                     
+__________________________________________________________________________________________________
+batch_normalization_80 (BatchNo (None, 3, 3, 448)    1344        conv2d_92[0][0]                  
+__________________________________________________________________________________________________
+activation_80 (Activation)      (None, 3, 3, 448)    0           batch_normalization_80[0][0]     
+__________________________________________________________________________________________________
+conv2d_89 (Conv2D)              (None, 3, 3, 384)    491520      mixed8[0][0]                     
+__________________________________________________________________________________________________
+conv2d_93 (Conv2D)              (None, 3, 3, 384)    1548288     activation_80[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_77 (BatchNo (None, 3, 3, 384)    1152        conv2d_89[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_81 (BatchNo (None, 3, 3, 384)    1152        conv2d_93[0][0]                  
+__________________________________________________________________________________________________
+activation_77 (Activation)      (None, 3, 3, 384)    0           batch_normalization_77[0][0]     
+__________________________________________________________________________________________________
+activation_81 (Activation)      (None, 3, 3, 384)    0           batch_normalization_81[0][0]     
+__________________________________________________________________________________________________
+conv2d_90 (Conv2D)              (None, 3, 3, 384)    442368      activation_77[0][0]              
+__________________________________________________________________________________________________
+conv2d_91 (Conv2D)              (None, 3, 3, 384)    442368      activation_77[0][0]              
+__________________________________________________________________________________________________
+conv2d_94 (Conv2D)              (None, 3, 3, 384)    442368      activation_81[0][0]              
+__________________________________________________________________________________________________
+conv2d_95 (Conv2D)              (None, 3, 3, 384)    442368      activation_81[0][0]              
+__________________________________________________________________________________________________
+average_pooling2d_7 (AveragePoo (None, 3, 3, 1280)   0           mixed8[0][0]                     
+__________________________________________________________________________________________________
+conv2d_88 (Conv2D)              (None, 3, 3, 320)    409600      mixed8[0][0]                     
+__________________________________________________________________________________________________
+batch_normalization_78 (BatchNo (None, 3, 3, 384)    1152        conv2d_90[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_79 (BatchNo (None, 3, 3, 384)    1152        conv2d_91[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_82 (BatchNo (None, 3, 3, 384)    1152        conv2d_94[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_83 (BatchNo (None, 3, 3, 384)    1152        conv2d_95[0][0]                  
+__________________________________________________________________________________________________
+conv2d_96 (Conv2D)              (None, 3, 3, 192)    245760      average_pooling2d_7[0][0]        
+__________________________________________________________________________________________________
+batch_normalization_76 (BatchNo (None, 3, 3, 320)    960         conv2d_88[0][0]                  
+__________________________________________________________________________________________________
+activation_78 (Activation)      (None, 3, 3, 384)    0           batch_normalization_78[0][0]     
+__________________________________________________________________________________________________
+activation_79 (Activation)      (None, 3, 3, 384)    0           batch_normalization_79[0][0]     
+__________________________________________________________________________________________________
+activation_82 (Activation)      (None, 3, 3, 384)    0           batch_normalization_82[0][0]     
+__________________________________________________________________________________________________
+activation_83 (Activation)      (None, 3, 3, 384)    0           batch_normalization_83[0][0]     
+__________________________________________________________________________________________________
+batch_normalization_84 (BatchNo (None, 3, 3, 192)    576         conv2d_96[0][0]                  
+__________________________________________________________________________________________________
+activation_76 (Activation)      (None, 3, 3, 320)    0           batch_normalization_76[0][0]     
+__________________________________________________________________________________________________
+mixed9_0 (Concatenate)          (None, 3, 3, 768)    0           activation_78[0][0]              
+                                                                 activation_79[0][0]              
+__________________________________________________________________________________________________
+concatenate (Concatenate)       (None, 3, 3, 768)    0           activation_82[0][0]              
+                                                                 activation_83[0][0]              
+__________________________________________________________________________________________________
+activation_84 (Activation)      (None, 3, 3, 192)    0           batch_normalization_84[0][0]     
+__________________________________________________________________________________________________
+mixed9 (Concatenate)            (None, 3, 3, 2048)   0           activation_76[0][0]              
+                                                                 mixed9_0[0][0]                   
+                                                                 concatenate[0][0]                
+                                                                 activation_84[0][0]              
+__________________________________________________________________________________________________
+conv2d_101 (Conv2D)             (None, 3, 3, 448)    917504      mixed9[0][0]                     
+__________________________________________________________________________________________________
+batch_normalization_89 (BatchNo (None, 3, 3, 448)    1344        conv2d_101[0][0]                 
+__________________________________________________________________________________________________
+activation_89 (Activation)      (None, 3, 3, 448)    0           batch_normalization_89[0][0]     
+__________________________________________________________________________________________________
+conv2d_98 (Conv2D)              (None, 3, 3, 384)    786432      mixed9[0][0]                     
+__________________________________________________________________________________________________
+conv2d_102 (Conv2D)             (None, 3, 3, 384)    1548288     activation_89[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_86 (BatchNo (None, 3, 3, 384)    1152        conv2d_98[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_90 (BatchNo (None, 3, 3, 384)    1152        conv2d_102[0][0]                 
+__________________________________________________________________________________________________
+activation_86 (Activation)      (None, 3, 3, 384)    0           batch_normalization_86[0][0]     
+__________________________________________________________________________________________________
+activation_90 (Activation)      (None, 3, 3, 384)    0           batch_normalization_90[0][0]     
+__________________________________________________________________________________________________
+conv2d_99 (Conv2D)              (None, 3, 3, 384)    442368      activation_86[0][0]              
+__________________________________________________________________________________________________
+conv2d_100 (Conv2D)             (None, 3, 3, 384)    442368      activation_86[0][0]              
+__________________________________________________________________________________________________
+conv2d_103 (Conv2D)             (None, 3, 3, 384)    442368      activation_90[0][0]              
+__________________________________________________________________________________________________
+conv2d_104 (Conv2D)             (None, 3, 3, 384)    442368      activation_90[0][0]              
+__________________________________________________________________________________________________
+average_pooling2d_8 (AveragePoo (None, 3, 3, 2048)   0           mixed9[0][0]                     
+__________________________________________________________________________________________________
+conv2d_97 (Conv2D)              (None, 3, 3, 320)    655360      mixed9[0][0]                     
+__________________________________________________________________________________________________
+batch_normalization_87 (BatchNo (None, 3, 3, 384)    1152        conv2d_99[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_88 (BatchNo (None, 3, 3, 384)    1152        conv2d_100[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_91 (BatchNo (None, 3, 3, 384)    1152        conv2d_103[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_92 (BatchNo (None, 3, 3, 384)    1152        conv2d_104[0][0]                 
+__________________________________________________________________________________________________
+conv2d_105 (Conv2D)             (None, 3, 3, 192)    393216      average_pooling2d_8[0][0]        
+__________________________________________________________________________________________________
+batch_normalization_85 (BatchNo (None, 3, 3, 320)    960         conv2d_97[0][0]                  
+__________________________________________________________________________________________________
+activation_87 (Activation)      (None, 3, 3, 384)    0           batch_normalization_87[0][0]     
+__________________________________________________________________________________________________
+activation_88 (Activation)      (None, 3, 3, 384)    0           batch_normalization_88[0][0]     
+__________________________________________________________________________________________________
+activation_91 (Activation)      (None, 3, 3, 384)    0           batch_normalization_91[0][0]     
+__________________________________________________________________________________________________
+activation_92 (Activation)      (None, 3, 3, 384)    0           batch_normalization_92[0][0]     
+__________________________________________________________________________________________________
+batch_normalization_93 (BatchNo (None, 3, 3, 192)    576         conv2d_105[0][0]                 
+__________________________________________________________________________________________________
+activation_85 (Activation)      (None, 3, 3, 320)    0           batch_normalization_85[0][0]     
+__________________________________________________________________________________________________
+mixed9_1 (Concatenate)          (None, 3, 3, 768)    0           activation_87[0][0]              
+                                                                 activation_88[0][0]              
+__________________________________________________________________________________________________
+concatenate_1 (Concatenate)     (None, 3, 3, 768)    0           activation_91[0][0]              
+                                                                 activation_92[0][0]              
+__________________________________________________________________________________________________
+activation_93 (Activation)      (None, 3, 3, 192)    0           batch_normalization_93[0][0]     
+__________________________________________________________________________________________________
+mixed10 (Concatenate)           (None, 3, 3, 2048)   0           activation_85[0][0]              
+                                                                 mixed9_1[0][0]                   
+                                                                 concatenate_1[0][0]              
+                                                                 activation_93[0][0]              
+==================================================================================================
+Total params: 21,802,784
+Trainable params: 21,768,352
+Non-trainable params: 34,432
+__________________________________________________________________________________________________
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">pre_trained_model</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
+  <span class="n">layer</span><span class="o">.</span><span class="n">trainable</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">last_layer</span> <span class="o">=</span> <span class="n">pre_trained_model</span><span class="o">.</span><span class="n">get_layer</span><span class="p">(</span><span class="s1">&#39;mixed7&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;last layour output shape: &#39;</span><span class="p">,</span> <span class="n">last_layer</span><span class="o">.</span><span class="n">output_shape</span><span class="p">)</span>
+<span class="n">last_output</span> <span class="o">=</span> <span class="n">last_layer</span><span class="o">.</span><span class="n">output</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>last layour output shape:  (None, 7, 7, 768)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Flatten the output layter to 1 dimension</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">()(</span><span class="n">last_output</span><span class="p">)</span>
+<span class="c1"># Add a fully connected layer with 1,024 hidden units and ReLU activation</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="c1"># Add a final sigmoid layer for classifcation</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-28-11f8cdef4f20&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span> 
+<span class="ansi-green-intense-fg ansi-bold">      3</span> <span class="ansi-red-fg"># Flatten the output layter to 1 dimension</span>
+<span class="ansi-green-fg">----&gt; 4</span><span class="ansi-red-fg"> </span>x <span class="ansi-blue-fg">=</span> layers<span class="ansi-blue-fg">.</span>Flatten<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">(</span>last_output<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span> <span class="ansi-red-fg"># Add a fully connected layer with 1,024 hidden units and ReLU activation</span>
+<span class="ansi-green-intense-fg ansi-bold">      6</span> x <span class="ansi-blue-fg">=</span> layers<span class="ansi-blue-fg">.</span>Dense<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">1024</span><span class="ansi-blue-fg">,</span> activation<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;relu&#39;</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">(</span>x<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;layers&#39; is not defined</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+</div>
+
+
+
+  </div><a class="u-url" href="/ml-journal/2021/09/25/ai-and-ml-for-coders-ch3.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/ml-journal/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/ml-journal/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/ml-journal/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>ML Journal and Writings.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/adrianmoses" title="adrianmoses"><svg class="svg-icon grey"><use xlink:href="/ml-journal/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/marsmoses" title="marsmoses"><svg class="svg-icon grey"><use xlink:href="/ml-journal/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
