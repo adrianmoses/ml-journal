@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>AI and ML for Coders Ch 2 | Adrian Moses</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="AI and ML for Coders Ch 2" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="ML Journal and Writings." />
+<meta property="og:description" content="ML Journal and Writings." />
+<link rel="canonical" href="https://adrianmoses.github.io/ml-journal/2021/09/24/ai-and-ml-for-coders-ch2.html" />
+<meta property="og:url" content="https://adrianmoses.github.io/ml-journal/2021/09/24/ai-and-ml-for-coders-ch2.html" />
+<meta property="og:site_name" content="Adrian Moses" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-09-24T00:00:00-05:00" />
+<script type="application/ld+json">
+{"datePublished":"2021-09-24T00:00:00-05:00","url":"https://adrianmoses.github.io/ml-journal/2021/09/24/ai-and-ml-for-coders-ch2.html","@type":"BlogPosting","headline":"AI and ML for Coders Ch 2","dateModified":"2021-09-24T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://adrianmoses.github.io/ml-journal/2021/09/24/ai-and-ml-for-coders-ch2.html"},"description":"ML Journal and Writings.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/ml-journal/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://adrianmoses.github.io/ml-journal/feed.xml" title="Adrian Moses" /><link rel="shortcut icon" type="image/x-icon" href="/ml-journal/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/ml-journal/">Adrian Moses</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/ml-journal/about/">About Me</a><a class="page-link" href="/ml-journal/search/">Search</a><a class="page-link" href="/ml-journal/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">AI and ML for Coders Ch 2</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-09-24T00:00:00-05:00" itemprop="datePublished">
+        Sep 24, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      11 min read
+    
+</span></p>
+
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/adrianmoses/ml-journal/tree/master/_notebooks/2021-09-24-ai-and-ml-for-coders-ch2.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/ml-journal/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/adrianmoses/ml-journal/master?filepath=_notebooks%2F2021-09-24-ai-and-ml-for-coders-ch2.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/ml-journal/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/adrianmoses/ml-journal/blob/master/_notebooks/2021-09-24-ai-and-ml-for-coders-ch2.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/ml-journal/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2021-09-24-ai-and-ml-for-coders-ch2.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Introduction-to-Computer-Vision">Introduction to Computer Vision<a class="anchor-link" href="#Introduction-to-Computer-Vision"> </a></h1><p>The ability to algorithmicly see an image as a type of clothing is very difficult to define with rule-based programming. Instead, let's use machine learning.</p>
+<p>Using the Fashion MNIST dataset we have 10 types of images based on clothing types. Each image is 28x28 and is in black and white. Meaning each pixel value is between 0 and 255.</p>
+<p>We can't model a linear relationship between the X (image pixels) and the Y (clothing type)</p>
+<p>However we can use the output node layer as a represenation of the 10 clothing types. Each image will be loaded into every node and the output will spit out a probability that the image is of the clothing type the output node represents.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip install tensorflow-cpu
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Collecting tensorflow-cpu
+  Downloading tensorflow_cpu-2.6.0-cp38-cp38-macosx_10_11_x86_64.whl (199.0 MB)
+     |████████████████████████████████| 199.0 MB 105 kB/s 
+Requirement already satisfied: typing-extensions~=3.7.4 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from tensorflow-cpu) (3.7.4.3)
+Collecting keras~=2.6
+  Using cached keras-2.6.0-py2.py3-none-any.whl (1.3 MB)
+Collecting astunparse~=1.6.3
+  Using cached astunparse-1.6.3-py2.py3-none-any.whl (12 kB)
+Collecting termcolor~=1.1.0
+  Using cached termcolor-1.1.0.tar.gz (3.9 kB)
+Collecting gast==0.4.0
+  Using cached gast-0.4.0-py3-none-any.whl (9.8 kB)
+Collecting google-pasta~=0.2
+  Using cached google_pasta-0.2.0-py3-none-any.whl (57 kB)
+Requirement already satisfied: wheel~=0.35 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from tensorflow-cpu) (0.36.2)
+Collecting h5py~=3.1.0
+  Downloading h5py-3.1.0-cp38-cp38-macosx_10_9_x86_64.whl (2.9 MB)
+     |████████████████████████████████| 2.9 MB 29.6 MB/s 
+Requirement already satisfied: wrapt~=1.12.1 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from tensorflow-cpu) (1.12.1)
+Collecting absl-py~=0.10
+  Downloading absl_py-0.14.0-py3-none-any.whl (131 kB)
+     |████████████████████████████████| 131 kB 34.0 MB/s 
+Collecting keras-preprocessing~=1.1.2
+  Using cached Keras_Preprocessing-1.1.2-py2.py3-none-any.whl (42 kB)
+Collecting opt-einsum~=3.3.0
+  Using cached opt_einsum-3.3.0-py3-none-any.whl (65 kB)
+Collecting numpy~=1.19.2
+  Downloading numpy-1.19.5-cp38-cp38-macosx_10_9_x86_64.whl (15.6 MB)
+     |████████████████████████████████| 15.6 MB 28.5 MB/s 
+Collecting tensorboard~=2.6
+  Using cached tensorboard-2.6.0-py3-none-any.whl (5.6 MB)
+Collecting grpcio&lt;2.0,&gt;=1.37.0
+  Downloading grpcio-1.40.0-cp38-cp38-macosx_10_10_x86_64.whl (4.0 MB)
+     |████████████████████████████████| 4.0 MB 20.9 MB/s 
+Collecting tensorflow-estimator~=2.6
+  Using cached tensorflow_estimator-2.6.0-py2.py3-none-any.whl (462 kB)
+Collecting protobuf&gt;=3.9.2
+  Downloading protobuf-3.18.0-cp38-cp38-macosx_10_9_x86_64.whl (1.0 MB)
+     |████████████████████████████████| 1.0 MB 27.9 MB/s 
+Collecting flatbuffers~=1.12.0
+  Using cached flatbuffers-1.12-py2.py3-none-any.whl (15 kB)
+Requirement already satisfied: six~=1.15.0 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from tensorflow-cpu) (1.15.0)
+Collecting clang~=5.0
+  Using cached clang-5.0.tar.gz (30 kB)
+Requirement already satisfied: requests&lt;3,&gt;=2.21.0 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from tensorboard~=2.6-&gt;tensorflow-cpu) (2.25.1)
+Requirement already satisfied: werkzeug&gt;=0.11.15 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from tensorboard~=2.6-&gt;tensorflow-cpu) (1.0.1)
+Collecting markdown&gt;=2.6.8
+  Using cached Markdown-3.3.4-py3-none-any.whl (97 kB)
+Requirement already satisfied: setuptools&gt;=41.0.0 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from tensorboard~=2.6-&gt;tensorflow-cpu) (52.0.0.post20210125)
+Collecting tensorboard-plugin-wit&gt;=1.6.0
+  Using cached tensorboard_plugin_wit-1.8.0-py3-none-any.whl (781 kB)
+Collecting google-auth-oauthlib&lt;0.5,&gt;=0.4.1
+  Using cached google_auth_oauthlib-0.4.6-py2.py3-none-any.whl (18 kB)
+Collecting tensorboard-data-server&lt;0.7.0,&gt;=0.6.0
+  Using cached tensorboard_data_server-0.6.1-py3-none-macosx_10_9_x86_64.whl (3.5 MB)
+Collecting google-auth&lt;2,&gt;=1.6.3
+  Using cached google_auth-1.35.0-py2.py3-none-any.whl (152 kB)
+Collecting rsa&lt;5,&gt;=3.1.4
+  Using cached rsa-4.7.2-py3-none-any.whl (34 kB)
+Collecting cachetools&lt;5.0,&gt;=2.0.0
+  Using cached cachetools-4.2.2-py3-none-any.whl (11 kB)
+Collecting pyasn1-modules&gt;=0.2.1
+  Using cached pyasn1_modules-0.2.8-py2.py3-none-any.whl (155 kB)
+Collecting requests-oauthlib&gt;=0.7.0
+  Using cached requests_oauthlib-1.3.0-py2.py3-none-any.whl (23 kB)
+Collecting pyasn1&lt;0.5.0,&gt;=0.4.6
+  Using cached pyasn1-0.4.8-py2.py3-none-any.whl (77 kB)
+Requirement already satisfied: chardet&lt;5,&gt;=3.0.2 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from requests&lt;3,&gt;=2.21.0-&gt;tensorboard~=2.6-&gt;tensorflow-cpu) (4.0.0)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from requests&lt;3,&gt;=2.21.0-&gt;tensorboard~=2.6-&gt;tensorflow-cpu) (1.26.4)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from requests&lt;3,&gt;=2.21.0-&gt;tensorboard~=2.6-&gt;tensorflow-cpu) (2.10)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from requests&lt;3,&gt;=2.21.0-&gt;tensorboard~=2.6-&gt;tensorflow-cpu) (2020.12.5)
+Collecting oauthlib&gt;=3.0.0
+  Using cached oauthlib-3.1.1-py2.py3-none-any.whl (146 kB)
+Building wheels for collected packages: clang, termcolor
+  Building wheel for clang (setup.py) ... done
+  Created wheel for clang: filename=clang-5.0-py3-none-any.whl size=30702 sha256=da15ad6b0d6d4b2a3771249b17258a29cd98a0ec320998b59d0271947a6dc249
+  Stored in directory: /Users/adrianmoses/Library/Caches/pip/wheels/f1/60/77/22b9b5887bd47801796a856f47650d9789c74dc3161a26d608
+  Building wheel for termcolor (setup.py) ... done
+  Created wheel for termcolor: filename=termcolor-1.1.0-py3-none-any.whl size=4829 sha256=0e700811fb720cbb45531971531821ac22f2c4752b8e8da9f111d274868e236f
+  Stored in directory: /Users/adrianmoses/Library/Caches/pip/wheels/a0/16/9c/5473df82468f958445479c59e784896fa24f4a5fc024b0f501
+Successfully built clang termcolor
+Installing collected packages: pyasn1, rsa, pyasn1-modules, oauthlib, cachetools, requests-oauthlib, google-auth, tensorboard-plugin-wit, tensorboard-data-server, protobuf, numpy, markdown, grpcio, google-auth-oauthlib, absl-py, termcolor, tensorflow-estimator, tensorboard, opt-einsum, keras-preprocessing, keras, h5py, google-pasta, gast, flatbuffers, clang, astunparse, tensorflow-cpu
+  Attempting uninstall: numpy
+    Found existing installation: numpy 1.20.1
+    Uninstalling numpy-1.20.1:
+      Successfully uninstalled numpy-1.20.1
+  Attempting uninstall: h5py
+    Found existing installation: h5py 2.10.0
+    Uninstalling h5py-2.10.0:
+      Successfully uninstalled h5py-2.10.0
+Successfully installed absl-py-0.14.0 astunparse-1.6.3 cachetools-4.2.2 clang-5.0 flatbuffers-1.12 gast-0.4.0 google-auth-1.35.0 google-auth-oauthlib-0.4.6 google-pasta-0.2.0 grpcio-1.40.0 h5py-3.1.0 keras-2.6.0 keras-preprocessing-1.1.2 markdown-3.3.4 numpy-1.19.5 oauthlib-3.1.1 opt-einsum-3.3.0 protobuf-3.18.0 pyasn1-0.4.8 pyasn1-modules-0.2.8 requests-oauthlib-1.3.0 rsa-4.7.2 tensorboard-2.6.0 tensorboard-data-server-0.6.1 tensorboard-plugin-wit-1.8.0 tensorflow-cpu-2.6.0 tensorflow-estimator-2.6.0 termcolor-1.1.0
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span>
+<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">fashion_mnist</span> <span class="c1"># dataset</span>
+
+<span class="p">(</span><span class="n">training_images</span><span class="p">,</span> <span class="n">training_labels</span><span class="p">),</span> <span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">)</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span> <span class="c1"># load data into train and test sets</span>
+
+<span class="n">training_images</span> <span class="o">=</span> <span class="n">training_images</span> <span class="o">/</span> <span class="mf">255.0</span> <span class="c1"># normalize the images so that they&#39;re all between 0 and 1</span>
+<span class="n">test_images</span> <span class="o">=</span> <span class="n">test_images</span> <span class="o">/</span> <span class="mf">255.0</span>
+
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+  <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)),</span>
+  <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">),</span> <span class="c1"># hidden layer</span>
+  <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">)</span> <span class="c1"># output layer</span>
+<span class="p">])</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="c1"># adam is an evolution of sgd to better find that global optimum (uses momentum)</span>
+  <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;sparse_categorical_crossentropy&#39;</span><span class="p">,</span> <span class="c1"># common loss function for softmax classification</span>
+  <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">training_images</span><span class="p">,</span> <span class="n">training_labels</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/train-labels-idx1-ubyte.gz
+32768/29515 [=================================] - 0s 0us/step
+40960/29515 [=========================================] - 0s 0us/step
+Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/train-images-idx3-ubyte.gz
+26427392/26421880 [==============================] - 1s 0us/step
+26435584/26421880 [==============================] - 1s 0us/step
+Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/t10k-labels-idx1-ubyte.gz
+16384/5148 [===============================================================================================] - 0s 0us/step
+Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/t10k-images-idx3-ubyte.gz
+4423680/4422102 [==============================] - 0s 0us/step
+4431872/4422102 [==============================] - 0s 0us/step
+Epoch 1/5
+1875/1875 [==============================] - 2s 732us/step - loss: 0.4964 - accuracy: 0.8251
+Epoch 2/5
+1875/1875 [==============================] - 1s 745us/step - loss: 0.3719 - accuracy: 0.8655
+Epoch 3/5
+1875/1875 [==============================] - 1s 740us/step - loss: 0.3349 - accuracy: 0.8771
+Epoch 4/5
+1875/1875 [==============================] - 1s 743us/step - loss: 0.3114 - accuracy: 0.8846
+Epoch 5/5
+1875/1875 [==============================] - 1s 747us/step - loss: 0.2940 - accuracy: 0.8915
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;keras.callbacks.History at 0x7ff180afcd00&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>313/313 [==============================] - 0s 508us/step - loss: 0.3397 - accuracy: 0.8791
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[0.3397229313850403, 0.8791000247001648]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">classifications</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_images</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classifications</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># probabilities for each class</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_labels</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># actual correct class</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[1.3823378e-05 3.3052868e-07 1.6802342e-05 1.0910228e-06 6.6072988e-07
+ 5.4068407e-03 1.5284693e-05 7.9095788e-02 3.6717476e-05 9.1541272e-01]
+9
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">training_images</span><span class="p">,</span> <span class="n">training_labels</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Epoch 1/50
+1875/1875 [==============================] - 1s 749us/step - loss: 0.2797 - accuracy: 0.8959
+Epoch 2/50
+1875/1875 [==============================] - 1s 749us/step - loss: 0.2682 - accuracy: 0.9002
+Epoch 3/50
+1875/1875 [==============================] - 1s 771us/step - loss: 0.2574 - accuracy: 0.9042
+Epoch 4/50
+1875/1875 [==============================] - 1s 746us/step - loss: 0.2477 - accuracy: 0.9087
+Epoch 5/50
+1875/1875 [==============================] - 1s 746us/step - loss: 0.2379 - accuracy: 0.9117
+Epoch 6/50
+1875/1875 [==============================] - 1s 749us/step - loss: 0.2321 - accuracy: 0.9139
+Epoch 7/50
+1875/1875 [==============================] - 1s 747us/step - loss: 0.2225 - accuracy: 0.9169
+Epoch 8/50
+1875/1875 [==============================] - 1s 770us/step - loss: 0.2172 - accuracy: 0.9186
+Epoch 9/50
+1875/1875 [==============================] - 1s 770us/step - loss: 0.2100 - accuracy: 0.9210
+Epoch 10/50
+1875/1875 [==============================] - 1s 775us/step - loss: 0.2045 - accuracy: 0.9230
+Epoch 11/50
+1875/1875 [==============================] - 1s 763us/step - loss: 0.1986 - accuracy: 0.9247
+Epoch 12/50
+1875/1875 [==============================] - 1s 774us/step - loss: 0.1913 - accuracy: 0.9276
+Epoch 13/50
+1875/1875 [==============================] - 1s 749us/step - loss: 0.1880 - accuracy: 0.9282
+Epoch 14/50
+1875/1875 [==============================] - 1s 757us/step - loss: 0.1821 - accuracy: 0.9323
+Epoch 15/50
+1875/1875 [==============================] - 1s 761us/step - loss: 0.1780 - accuracy: 0.9326
+Epoch 16/50
+1875/1875 [==============================] - 1s 754us/step - loss: 0.1728 - accuracy: 0.9335
+Epoch 17/50
+1875/1875 [==============================] - 1s 768us/step - loss: 0.1700 - accuracy: 0.9364
+Epoch 18/50
+1875/1875 [==============================] - 1s 762us/step - loss: 0.1655 - accuracy: 0.9370
+Epoch 19/50
+1875/1875 [==============================] - 1s 768us/step - loss: 0.1602 - accuracy: 0.9388
+Epoch 20/50
+1875/1875 [==============================] - 1s 763us/step - loss: 0.1553 - accuracy: 0.9418
+Epoch 21/50
+1875/1875 [==============================] - 1s 761us/step - loss: 0.1539 - accuracy: 0.9417
+Epoch 22/50
+1875/1875 [==============================] - 1s 770us/step - loss: 0.1505 - accuracy: 0.9436
+Epoch 23/50
+1875/1875 [==============================] - 1s 765us/step - loss: 0.1468 - accuracy: 0.9444
+Epoch 24/50
+1875/1875 [==============================] - 1s 758us/step - loss: 0.1447 - accuracy: 0.9444
+Epoch 25/50
+1875/1875 [==============================] - 1s 795us/step - loss: 0.1399 - accuracy: 0.9472
+Epoch 26/50
+1875/1875 [==============================] - 1s 763us/step - loss: 0.1378 - accuracy: 0.9468
+Epoch 27/50
+1875/1875 [==============================] - 1s 764us/step - loss: 0.1340 - accuracy: 0.9502
+Epoch 28/50
+1875/1875 [==============================] - 1s 762us/step - loss: 0.1305 - accuracy: 0.9508
+Epoch 29/50
+1875/1875 [==============================] - 1s 757us/step - loss: 0.1293 - accuracy: 0.9516
+Epoch 30/50
+1875/1875 [==============================] - 1s 771us/step - loss: 0.1275 - accuracy: 0.9526
+Epoch 31/50
+1875/1875 [==============================] - 1s 755us/step - loss: 0.1228 - accuracy: 0.9532
+Epoch 32/50
+1875/1875 [==============================] - 1s 764us/step - loss: 0.1208 - accuracy: 0.9543
+Epoch 33/50
+1875/1875 [==============================] - 1s 752us/step - loss: 0.1166 - accuracy: 0.9552
+Epoch 34/50
+1875/1875 [==============================] - 1s 758us/step - loss: 0.1175 - accuracy: 0.9551
+Epoch 35/50
+1875/1875 [==============================] - 1s 767us/step - loss: 0.1173 - accuracy: 0.9556
+Epoch 36/50
+1875/1875 [==============================] - 1s 757us/step - loss: 0.1130 - accuracy: 0.9572
+Epoch 37/50
+1875/1875 [==============================] - 1s 763us/step - loss: 0.1120 - accuracy: 0.9571
+Epoch 38/50
+1875/1875 [==============================] - 1s 766us/step - loss: 0.1090 - accuracy: 0.9591
+Epoch 39/50
+1875/1875 [==============================] - 1s 777us/step - loss: 0.1082 - accuracy: 0.9598
+Epoch 40/50
+1875/1875 [==============================] - 1s 741us/step - loss: 0.1034 - accuracy: 0.9603
+Epoch 41/50
+1875/1875 [==============================] - 1s 770us/step - loss: 0.1031 - accuracy: 0.9622
+Epoch 42/50
+1875/1875 [==============================] - 1s 753us/step - loss: 0.1002 - accuracy: 0.9621
+Epoch 43/50
+1875/1875 [==============================] - 1s 740us/step - loss: 0.1014 - accuracy: 0.9619
+Epoch 44/50
+1875/1875 [==============================] - 1s 743us/step - loss: 0.0974 - accuracy: 0.9627
+Epoch 45/50
+1875/1875 [==============================] - 1s 747us/step - loss: 0.0962 - accuracy: 0.9638
+Epoch 46/50
+1875/1875 [==============================] - 1s 768us/step - loss: 0.0959 - accuracy: 0.9635
+Epoch 47/50
+1875/1875 [==============================] - 2s 811us/step - loss: 0.0923 - accuracy: 0.9646
+Epoch 48/50
+1875/1875 [==============================] - 2s 810us/step - loss: 0.0910 - accuracy: 0.9653
+Epoch 49/50
+1875/1875 [==============================] - 1s 787us/step - loss: 0.0909 - accuracy: 0.9661
+Epoch 50/50
+1875/1875 [==============================] - 2s 884us/step - loss: 0.0879 - accuracy: 0.9676
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;keras.callbacks.History at 0x7ff1a125fa00&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>313/313 [==============================] - 0s 559us/step - loss: 0.5352 - accuracy: 0.8879
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[0.5351569056510925, 0.8878999948501587]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>After adding 50 epochs, the training accuracy increased, but the evaluation decreased.
+This is a sign of <em>overfitting</em> because the model is having a harding time generalizing on data it hasn't seen</p>
+<p>By the way, always recompile the model when retraining.</p>
+<p>Let's use <em>callbacks</em> to train the same model but stopping it when an accuracy has been reached.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">myCallback</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">Callback</span><span class="p">):</span>
+  
+  <span class="k">def</span> <span class="nf">on_epoch_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="p">{}):</span>
+    <span class="k">if</span> <span class="n">logs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;accuracy&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.95</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Reached 95</span><span class="si">% a</span><span class="s2">ccuracy so cancelling training!&quot;</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">stop_training</span> <span class="o">=</span> <span class="kc">True</span>
+
+
+<span class="n">callbacks</span> <span class="o">=</span> <span class="n">myCallback</span><span class="p">()</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+  <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
+  <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">),</span>
+  <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span>
+  <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;sparse_categorical_crossentropy&#39;</span><span class="p">,</span>
+  <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">training_images</span><span class="p">,</span> <span class="n">training_labels</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">callbacks</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Epoch 1/50
+1875/1875 [==============================] - 2s 756us/step - loss: 0.4989 - accuracy: 0.8232
+Epoch 2/50
+1875/1875 [==============================] - 1s 756us/step - loss: 0.3711 - accuracy: 0.8649
+Epoch 3/50
+1875/1875 [==============================] - 1s 756us/step - loss: 0.3344 - accuracy: 0.8776
+Epoch 4/50
+1875/1875 [==============================] - 1s 749us/step - loss: 0.3114 - accuracy: 0.8853
+Epoch 5/50
+1875/1875 [==============================] - 1s 756us/step - loss: 0.2932 - accuracy: 0.8913
+Epoch 6/50
+1875/1875 [==============================] - 1s 747us/step - loss: 0.2788 - accuracy: 0.8967
+Epoch 7/50
+1875/1875 [==============================] - 1s 750us/step - loss: 0.2646 - accuracy: 0.9012
+Epoch 8/50
+1875/1875 [==============================] - 1s 761us/step - loss: 0.2573 - accuracy: 0.9042
+Epoch 9/50
+1875/1875 [==============================] - 1s 752us/step - loss: 0.2458 - accuracy: 0.9086
+Epoch 10/50
+1875/1875 [==============================] - 1s 778us/step - loss: 0.2399 - accuracy: 0.9111
+Epoch 11/50
+1875/1875 [==============================] - 1s 764us/step - loss: 0.2291 - accuracy: 0.9140
+Epoch 12/50
+1875/1875 [==============================] - 1s 759us/step - loss: 0.2235 - accuracy: 0.9167
+Epoch 13/50
+1875/1875 [==============================] - 1s 768us/step - loss: 0.2171 - accuracy: 0.9190
+Epoch 14/50
+1875/1875 [==============================] - 1s 756us/step - loss: 0.2120 - accuracy: 0.9210
+Epoch 15/50
+1875/1875 [==============================] - 1s 795us/step - loss: 0.2069 - accuracy: 0.9226
+Epoch 16/50
+1875/1875 [==============================] - 1s 778us/step - loss: 0.1991 - accuracy: 0.9255
+Epoch 17/50
+1875/1875 [==============================] - 1s 779us/step - loss: 0.1936 - accuracy: 0.9273
+Epoch 18/50
+1875/1875 [==============================] - 1s 758us/step - loss: 0.1892 - accuracy: 0.9290
+Epoch 19/50
+1875/1875 [==============================] - 1s 771us/step - loss: 0.1844 - accuracy: 0.9310
+Epoch 20/50
+1875/1875 [==============================] - 1s 762us/step - loss: 0.1793 - accuracy: 0.9328
+Epoch 21/50
+1875/1875 [==============================] - 1s 762us/step - loss: 0.1762 - accuracy: 0.9338
+Epoch 22/50
+1875/1875 [==============================] - 1s 758us/step - loss: 0.1702 - accuracy: 0.9360
+Epoch 23/50
+1875/1875 [==============================] - 1s 771us/step - loss: 0.1670 - accuracy: 0.9373
+Epoch 24/50
+1875/1875 [==============================] - 2s 800us/step - loss: 0.1628 - accuracy: 0.9391
+Epoch 25/50
+1875/1875 [==============================] - 1s 761us/step - loss: 0.1600 - accuracy: 0.9400
+Epoch 26/50
+1875/1875 [==============================] - 1s 762us/step - loss: 0.1559 - accuracy: 0.9410
+Epoch 27/50
+1875/1875 [==============================] - 1s 757us/step - loss: 0.1526 - accuracy: 0.9418
+Epoch 28/50
+1875/1875 [==============================] - 1s 768us/step - loss: 0.1479 - accuracy: 0.9440
+Epoch 29/50
+1875/1875 [==============================] - 1s 760us/step - loss: 0.1463 - accuracy: 0.9447
+Epoch 30/50
+1875/1875 [==============================] - 1s 785us/step - loss: 0.1409 - accuracy: 0.9468
+Epoch 31/50
+1875/1875 [==============================] - 1s 768us/step - loss: 0.1395 - accuracy: 0.9477
+Epoch 32/50
+1875/1875 [==============================] - 1s 798us/step - loss: 0.1371 - accuracy: 0.9486
+Epoch 33/50
+1875/1875 [==============================] - 1s 754us/step - loss: 0.1353 - accuracy: 0.9484
+Epoch 34/50
+1875/1875 [==============================] - 1s 760us/step - loss: 0.1303 - accuracy: 0.9503
+
+Reached 95% accuracy so cancelling training!
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;keras.callbacks.History at 0x7ff1a1261730&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Callbacks are cool!</p>
+<p>Next chapter will use the more efficient approach of convolutions</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><a class="u-url" href="/ml-journal/2021/09/24/ai-and-ml-for-coders-ch2.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/ml-journal/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/ml-journal/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/ml-journal/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>ML Journal and Writings.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/adrianmoses" title="adrianmoses"><svg class="svg-icon grey"><use xlink:href="/ml-journal/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/marsmoses" title="marsmoses"><svg class="svg-icon grey"><use xlink:href="/ml-journal/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
