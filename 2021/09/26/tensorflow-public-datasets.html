@@ -1,0 +1,2243 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>AI and ML for Coders Ch 4 | Adrian Moses</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="AI and ML for Coders Ch 4" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="ML Journal and Writings." />
+<meta property="og:description" content="ML Journal and Writings." />
+<link rel="canonical" href="https://adrianmoses.github.io/ml-journal/2021/09/26/tensorflow-public-datasets.html" />
+<meta property="og:url" content="https://adrianmoses.github.io/ml-journal/2021/09/26/tensorflow-public-datasets.html" />
+<meta property="og:site_name" content="Adrian Moses" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-09-26T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"ML Journal and Writings.","url":"https://adrianmoses.github.io/ml-journal/2021/09/26/tensorflow-public-datasets.html","@type":"BlogPosting","headline":"AI and ML for Coders Ch 4","dateModified":"2021-09-26T00:00:00-05:00","datePublished":"2021-09-26T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://adrianmoses.github.io/ml-journal/2021/09/26/tensorflow-public-datasets.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/ml-journal/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://adrianmoses.github.io/ml-journal/feed.xml" title="Adrian Moses" /><link rel="shortcut icon" type="image/x-icon" href="/ml-journal/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/ml-journal/">Adrian Moses</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/ml-journal/about/">About Me</a><a class="page-link" href="/ml-journal/search/">Search</a><a class="page-link" href="/ml-journal/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">AI and ML for Coders Ch 4</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-09-26T00:00:00-05:00" itemprop="datePublished">
+        Sep 26, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      38 min read
+    
+</span></p>
+
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/adrianmoses/ml-journal/tree/master/_notebooks/2021-09-26-tensorflow-public-datasets.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/ml-journal/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/adrianmoses/ml-journal/master?filepath=_notebooks%2F2021-09-26-tensorflow-public-datasets.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/ml-journal/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/adrianmoses/ml-journal/blob/master/_notebooks/2021-09-26-tensorflow-public-datasets.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/ml-journal/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2021-09-26-tensorflow-public-datasets.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip install tensorflow-datasets
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Requirement already satisfied: tensorflow-datasets in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (4.4.0)
+Requirement already satisfied: requests&gt;=2.19.0 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from tensorflow-datasets) (2.25.1)
+Requirement already satisfied: absl-py in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from tensorflow-datasets) (0.12.0)
+Requirement already satisfied: dill in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from tensorflow-datasets) (0.3.4)
+Requirement already satisfied: termcolor in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from tensorflow-datasets) (1.1.0)
+Requirement already satisfied: tqdm in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from tensorflow-datasets) (4.59.0)
+Requirement already satisfied: six in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from tensorflow-datasets) (1.15.0)
+Requirement already satisfied: future in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from tensorflow-datasets) (0.18.2)
+Requirement already satisfied: protobuf&gt;=3.12.2 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from tensorflow-datasets) (3.18.0)
+Requirement already satisfied: tensorflow-metadata in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from tensorflow-datasets) (1.2.0)
+Requirement already satisfied: attrs&gt;=18.1.0 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from tensorflow-datasets) (20.3.0)
+Requirement already satisfied: numpy in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from tensorflow-datasets) (1.19.5)
+Requirement already satisfied: promise in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from tensorflow-datasets) (2.3)
+Requirement already satisfied: importlib-resources in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from tensorflow-datasets) (5.2.2)
+Requirement already satisfied: chardet&lt;5,&gt;=3.0.2 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from requests&gt;=2.19.0-&gt;tensorflow-datasets) (4.0.0)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from requests&gt;=2.19.0-&gt;tensorflow-datasets) (1.26.4)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from requests&gt;=2.19.0-&gt;tensorflow-datasets) (2020.12.5)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from requests&gt;=2.19.0-&gt;tensorflow-datasets) (2.10)
+Requirement already satisfied: zipp&gt;=3.1.0 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from importlib-resources-&gt;tensorflow-datasets) (3.4.1)
+Requirement already satisfied: googleapis-common-protos&lt;2,&gt;=1.52.0 in /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages (from tensorflow-metadata-&gt;tensorflow-datasets) (1.53.0)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Pass the name of the dataset ro the argumane of <code>load()</code></p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span> 
+<span class="kn">import</span> <span class="nn">tensorflow_datasets</span> <span class="k">as</span> <span class="nn">tfds</span>
+<span class="n">mnist_data</span> <span class="o">=</span> <span class="n">tfds</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;fashion_mnist&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">mnist_data</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>train
+test
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>These are dictionary key strings: train and test</p>
+<p>Let's now load the training data only</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mnist_train</span> <span class="o">=</span> <span class="n">tfds</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;fashion_mnist&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mnist_train</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">mnist_train</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;class &#39;tensorflow.python.data.ops.dataset_ops.PrefetchDataset&#39;&gt;
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">mnist_train</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">item</span><span class="p">))</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">])</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;class &#39;dict&#39;&gt;
+dict_keys([&#39;image&#39;, &#39;label&#39;])
+tf.Tensor(
+[[[  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [ 18]
+  [ 77]
+  [227]
+  [227]
+  [208]
+  [210]
+  [225]
+  [216]
+  [ 85]
+  [ 32]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]]
+
+ [[  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [ 61]
+  [100]
+  [ 97]
+  [ 80]
+  [ 57]
+  [117]
+  [227]
+  [238]
+  [115]
+  [ 49]
+  [ 78]
+  [106]
+  [108]
+  [ 71]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]]
+
+ [[  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [ 81]
+  [105]
+  [ 80]
+  [ 69]
+  [ 72]
+  [ 64]
+  [ 44]
+  [ 21]
+  [ 13]
+  [ 44]
+  [ 69]
+  [ 75]
+  [ 75]
+  [ 80]
+  [114]
+  [ 80]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]]
+
+ [[  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [ 26]
+  [ 92]
+  [ 69]
+  [ 68]
+  [ 75]
+  [ 75]
+  [ 71]
+  [ 74]
+  [ 83]
+  [ 75]
+  [ 77]
+  [ 78]
+  [ 74]
+  [ 74]
+  [ 83]
+  [ 77]
+  [108]
+  [ 34]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]]
+
+ [[  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [ 55]
+  [ 92]
+  [ 69]
+  [ 74]
+  [ 74]
+  [ 71]
+  [ 71]
+  [ 77]
+  [ 69]
+  [ 66]
+  [ 75]
+  [ 74]
+  [ 77]
+  [ 80]
+  [ 80]
+  [ 78]
+  [ 94]
+  [ 63]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]]
+
+ [[  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [ 63]
+  [ 95]
+  [ 66]
+  [ 68]
+  [ 72]
+  [ 72]
+  [ 69]
+  [ 72]
+  [ 74]
+  [ 74]
+  [ 74]
+  [ 75]
+  [ 75]
+  [ 77]
+  [ 80]
+  [ 77]
+  [106]
+  [ 61]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]]
+
+ [[  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [ 80]
+  [108]
+  [ 71]
+  [ 69]
+  [ 72]
+  [ 71]
+  [ 69]
+  [ 72]
+  [ 75]
+  [ 75]
+  [ 72]
+  [ 72]
+  [ 75]
+  [ 78]
+  [ 72]
+  [ 85]
+  [128]
+  [ 64]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]]
+
+ [[  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [ 88]
+  [120]
+  [ 75]
+  [ 74]
+  [ 77]
+  [ 75]
+  [ 72]
+  [ 77]
+  [ 74]
+  [ 74]
+  [ 77]
+  [ 78]
+  [ 83]
+  [ 83]
+  [ 66]
+  [111]
+  [123]
+  [ 78]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]]
+
+ [[  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [ 85]
+  [134]
+  [ 74]
+  [ 85]
+  [ 69]
+  [ 75]
+  [ 75]
+  [ 74]
+  [ 75]
+  [ 74]
+  [ 75]
+  [ 75]
+  [ 81]
+  [ 75]
+  [ 61]
+  [151]
+  [115]
+  [ 91]
+  [ 12]
+  [  0]
+  [  0]
+  [  0]
+  [  0]]
+
+ [[  0]
+  [  0]
+  [  0]
+  [  0]
+  [ 10]
+  [ 85]
+  [153]
+  [ 83]
+  [ 80]
+  [ 68]
+  [ 77]
+  [ 75]
+  [ 74]
+  [ 75]
+  [ 74]
+  [ 75]
+  [ 77]
+  [ 80]
+  [ 68]
+  [ 61]
+  [162]
+  [122]
+  [ 78]
+  [  6]
+  [  0]
+  [  0]
+  [  0]
+  [  0]]
+
+ [[  0]
+  [  0]
+  [  0]
+  [  0]
+  [ 30]
+  [ 75]
+  [154]
+  [ 85]
+  [ 80]
+  [ 71]
+  [ 80]
+  [ 72]
+  [ 77]
+  [ 75]
+  [ 75]
+  [ 77]
+  [ 78]
+  [ 77]
+  [ 75]
+  [ 49]
+  [191]
+  [132]
+  [ 72]
+  [ 15]
+  [  0]
+  [  0]
+  [  0]
+  [  0]]
+
+ [[  0]
+  [  0]
+  [  0]
+  [  0]
+  [ 58]
+  [ 66]
+  [174]
+  [115]
+  [ 66]
+  [ 77]
+  [ 80]
+  [ 72]
+  [ 78]
+  [ 75]
+  [ 77]
+  [ 78]
+  [ 78]
+  [ 77]
+  [ 66]
+  [ 49]
+  [222]
+  [131]
+  [ 77]
+  [ 37]
+  [  0]
+  [  0]
+  [  0]
+  [  0]]
+
+ [[  0]
+  [  0]
+  [  0]
+  [  0]
+  [ 69]
+  [ 55]
+  [179]
+  [139]
+  [ 55]
+  [ 92]
+  [ 74]
+  [ 74]
+  [ 78]
+  [ 74]
+  [ 78]
+  [ 77]
+  [ 75]
+  [ 80]
+  [ 64]
+  [ 55]
+  [242]
+  [111]
+  [ 95]
+  [ 44]
+  [  0]
+  [  0]
+  [  0]
+  [  0]]
+
+ [[  0]
+  [  0]
+  [  0]
+  [  0]
+  [ 74]
+  [ 57]
+  [159]
+  [180]
+  [ 55]
+  [ 92]
+  [ 64]
+  [ 72]
+  [ 74]
+  [ 74]
+  [ 77]
+  [ 75]
+  [ 77]
+  [ 78]
+  [ 55]
+  [ 66]
+  [255]
+  [ 97]
+  [108]
+  [ 49]
+  [  0]
+  [  0]
+  [  0]
+  [  0]]
+
+ [[  0]
+  [  0]
+  [  0]
+  [  0]
+  [ 74]
+  [ 66]
+  [145]
+  [153]
+  [ 72]
+  [ 83]
+  [ 58]
+  [ 78]
+  [ 77]
+  [ 75]
+  [ 75]
+  [ 75]
+  [ 72]
+  [ 80]
+  [ 30]
+  [132]
+  [255]
+  [ 37]
+  [122]
+  [ 60]
+  [  0]
+  [  0]
+  [  0]
+  [  0]]
+
+ [[  0]
+  [  0]
+  [  0]
+  [  0]
+  [ 80]
+  [ 69]
+  [142]
+  [180]
+  [142]
+  [ 57]
+  [ 64]
+  [ 78]
+  [ 74]
+  [ 75]
+  [ 75]
+  [ 75]
+  [ 72]
+  [ 85]
+  [ 21]
+  [185]
+  [227]
+  [ 37]
+  [143]
+  [ 63]
+  [  0]
+  [  0]
+  [  0]
+  [  0]]
+
+ [[  0]
+  [  0]
+  [  0]
+  [  0]
+  [ 83]
+  [ 71]
+  [136]
+  [194]
+  [126]
+  [ 46]
+  [ 69]
+  [ 75]
+  [ 72]
+  [ 75]
+  [ 75]
+  [ 75]
+  [ 74]
+  [ 78]
+  [ 38]
+  [139]
+  [185]
+  [ 60]
+  [151]
+  [ 58]
+  [  0]
+  [  0]
+  [  0]
+  [  0]]
+
+ [[  0]
+  [  0]
+  [  0]
+  [  4]
+  [ 81]
+  [ 74]
+  [145]
+  [177]
+  [ 78]
+  [ 49]
+  [ 74]
+  [ 77]
+  [ 75]
+  [ 75]
+  [ 75]
+  [ 75]
+  [ 74]
+  [ 72]
+  [ 63]
+  [ 80]
+  [156]
+  [117]
+  [153]
+  [ 55]
+  [  0]
+  [  0]
+  [  0]
+  [  0]]
+
+ [[  0]
+  [  0]
+  [  0]
+  [ 10]
+  [ 80]
+  [ 72]
+  [157]
+  [163]
+  [ 61]
+  [ 55]
+  [ 75]
+  [ 77]
+  [ 75]
+  [ 77]
+  [ 75]
+  [ 75]
+  [ 75]
+  [ 77]
+  [ 71]
+  [ 60]
+  [ 98]
+  [156]
+  [132]
+  [ 58]
+  [  0]
+  [  0]
+  [  0]
+  [  0]]
+
+ [[  0]
+  [  0]
+  [  0]
+  [ 13]
+  [ 77]
+  [ 74]
+  [157]
+  [143]
+  [ 43]
+  [ 61]
+  [ 72]
+  [ 75]
+  [ 77]
+  [ 75]
+  [ 74]
+  [ 77]
+  [ 77]
+  [ 75]
+  [ 71]
+  [ 58]
+  [ 80]
+  [157]
+  [120]
+  [ 66]
+  [  0]
+  [  0]
+  [  0]
+  [  0]]
+
+ [[  0]
+  [  0]
+  [  0]
+  [ 18]
+  [ 81]
+  [ 74]
+  [156]
+  [114]
+  [ 35]
+  [ 72]
+  [ 71]
+  [ 75]
+  [ 78]
+  [ 72]
+  [ 66]
+  [ 80]
+  [ 78]
+  [ 77]
+  [ 75]
+  [ 64]
+  [ 63]
+  [165]
+  [119]
+  [ 68]
+  [  0]
+  [  0]
+  [  0]
+  [  0]]
+
+ [[  0]
+  [  0]
+  [  0]
+  [ 23]
+  [ 85]
+  [ 81]
+  [177]
+  [ 57]
+  [ 52]
+  [ 77]
+  [ 71]
+  [ 78]
+  [ 80]
+  [ 72]
+  [ 75]
+  [ 74]
+  [ 77]
+  [ 77]
+  [ 75]
+  [ 64]
+  [ 37]
+  [173]
+  [ 95]
+  [ 72]
+  [  0]
+  [  0]
+  [  0]
+  [  0]]
+
+ [[  0]
+  [  0]
+  [  0]
+  [ 26]
+  [ 81]
+  [ 86]
+  [160]
+  [ 20]
+  [ 75]
+  [ 77]
+  [ 77]
+  [ 80]
+  [ 78]
+  [ 80]
+  [ 89]
+  [ 78]
+  [ 81]
+  [ 83]
+  [ 80]
+  [ 74]
+  [ 20]
+  [177]
+  [ 77]
+  [ 74]
+  [  0]
+  [  0]
+  [  0]
+  [  0]]
+
+ [[  0]
+  [  0]
+  [  0]
+  [ 49]
+  [ 77]
+  [ 91]
+  [200]
+  [  0]
+  [ 83]
+  [ 95]
+  [ 86]
+  [ 88]
+  [ 88]
+  [ 89]
+  [ 88]
+  [ 89]
+  [ 88]
+  [ 83]
+  [ 89]
+  [ 86]
+  [  0]
+  [191]
+  [ 78]
+  [ 80]
+  [ 24]
+  [  0]
+  [  0]
+  [  0]]
+
+ [[  0]
+  [  0]
+  [  0]
+  [ 54]
+  [ 71]
+  [108]
+  [165]
+  [  0]
+  [ 24]
+  [ 57]
+  [ 52]
+  [ 57]
+  [ 60]
+  [ 60]
+  [ 60]
+  [ 63]
+  [ 63]
+  [ 77]
+  [ 89]
+  [ 52]
+  [  0]
+  [211]
+  [ 97]
+  [ 77]
+  [ 61]
+  [  0]
+  [  0]
+  [  0]]
+
+ [[  0]
+  [  0]
+  [  0]
+  [ 68]
+  [ 91]
+  [117]
+  [137]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [ 18]
+  [216]
+  [ 94]
+  [ 97]
+  [ 57]
+  [  0]
+  [  0]
+  [  0]]
+
+ [[  0]
+  [  0]
+  [  0]
+  [ 54]
+  [115]
+  [105]
+  [185]
+  [  0]
+  [  0]
+  [  1]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [153]
+  [ 78]
+  [106]
+  [ 37]
+  [  0]
+  [  0]
+  [  0]]
+
+ [[  0]
+  [  0]
+  [  0]
+  [ 18]
+  [ 61]
+  [ 41]
+  [103]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [  0]
+  [106]
+  [ 47]
+  [ 69]
+  [ 23]
+  [  0]
+  [  0]
+  [  0]]], shape=(28, 28, 1), dtype=uint8)
+tf.Tensor(2, shape=(), dtype=int64)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You can also grab info about the data</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mnist_test</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">tfds</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;fashion_mnist&quot;</span><span class="p">,</span> <span class="n">with_info</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>tfds.core.DatasetInfo(
+    name=&#39;fashion_mnist&#39;,
+    full_name=&#39;fashion_mnist/3.0.1&#39;,
+    description=&#34;&#34;&#34;
+    Fashion-MNIST is a dataset of Zalando&#39;s article images consisting of a training set of 60,000 examples and a test set of 10,000 examples. Each example is a 28x28 grayscale image, associated with a label from 10 classes.
+    &#34;&#34;&#34;,
+    homepage=&#39;https://github.com/zalandoresearch/fashion-mnist&#39;,
+    data_path=&#39;/Users/adrianmoses/tensorflow_datasets/fashion_mnist/3.0.1&#39;,
+    download_size=29.45 MiB,
+    dataset_size=36.42 MiB,
+    features=FeaturesDict({
+        &#39;image&#39;: Image(shape=(28, 28, 1), dtype=tf.uint8),
+        &#39;label&#39;: ClassLabel(shape=(), dtype=tf.int64, num_classes=10),
+    }),
+    supervised_keys=(&#39;image&#39;, &#39;label&#39;),
+    disable_shuffling=False,
+    splits={
+        &#39;test&#39;: &lt;SplitInfo num_examples=10000, num_shards=1&gt;,
+        &#39;train&#39;: &lt;SplitInfo num_examples=60000, num_shards=1&gt;,
+    },
+    citation=&#34;&#34;&#34;@article{DBLP:journals/corr/abs-1708-07747,
+      author    = {Han Xiao and
+                   Kashif Rasul and
+                   Roland Vollgraf},
+      title     = {Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning
+                   Algorithms},
+      journal   = {CoRR},
+      volume    = {abs/1708.07747},
+      year      = {2017},
+      url       = {http://arxiv.org/abs/1708.07747},
+      archivePrefix = {arXiv},
+      eprint    = {1708.07747},
+      timestamp = {Mon, 13 Aug 2018 16:47:27 +0200},
+      biburl    = {https://dblp.org/rec/bib/journals/corr/abs-1708-07747},
+      bibsource = {dblp computer science bibliography, https://dblp.org}
+    }&#34;&#34;&#34;,
+)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Using-TFDS-with-Keras-Models">Using TFDS with Keras Models<a class="anchor-link" href="#Using-TFDS-with-Keras-Models"> </a></h2><p>Here's how to load in trainging and test data for feeding into keras models</p>
+<p>Note: <code>as_supervised</code> ensures we get tuples of (X, y)</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="n">training_images</span><span class="p">,</span> <span class="n">training_labels</span><span class="p">),</span> <span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">)</span> <span class="o">=</span> <span class="n">tfds</span><span class="o">.</span><span class="n">as_numpy</span><span class="p">(</span><span class="n">tfds</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;fashion_mnist&#39;</span><span class="p">,</span>
+  <span class="n">split</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">,</span><span class="s1">&#39;test&#39;</span><span class="p">],</span>
+  <span class="n">batch_size</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+  <span class="n">as_supervised</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>WARNING:tensorflow:From /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages/tensorflow_datasets/core/dataset_builder.py:622: get_single_element (from tensorflow.python.data.experimental.ops.get_single_element) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.data.Dataset.get_single_element()`.
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>WARNING:tensorflow:From /Users/adrianmoses/opt/anaconda3/lib/python3.8/site-packages/tensorflow_datasets/core/dataset_builder.py:622: get_single_element (from tensorflow.python.data.experimental.ops.get_single_element) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.data.Dataset.get_single_element()`.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">training_images</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(60000, 28, 28, 1)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Batch datasets with <code>.batch()</code> call</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">tfds</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;horses_or_humans&#39;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">as_supervised</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">train_batches</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">),</span>
+<span class="p">])</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;Adam&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;binary_crossentropy&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+
+<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_batches</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>103/103 [==============================] - 24s 225ms/step - loss: 3.0123 - accuracy: 0.8471
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Load cells by version using the semver version system.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">tfds</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;cnn_dailymail:3.1.0&quot;</span><span class="p">,</span> <span class="n">with_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre><span class="ansi-bold">Downloading and preparing dataset 558.32 MiB (download: 558.32 MiB, generated: 1.27 GiB, total: 1.82 GiB) to /Users/adrianmoses/tensorflow_datasets/cnn_dailymail/3.1.0...</span>
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>Dl Completed...: 0 url [00:00, ? url/s]
+Dl Completed...:   0%|          | 0/1 [00:00&lt;?, ? url/s]
+Dl Completed...:   0%|          | 0/2 [00:00&lt;?, ? url/s]
+Dl Completed...:   0%|          | 0/3 [00:00&lt;?, ? url/s]
+Dl Completed...:   0%|          | 0/4 [00:00&lt;?, ? url/s]
+Dl Completed...:   0%|          | 0/5 [00:00&lt;?, ? url/s]
+Dl Completed...:   0%|          | 0/5 [00:00&lt;?, ? url/s]
+Dl Completed...:   0%|          | 0/5 [00:00&lt;?, ? url/s]
+Dl Completed...:   0%|          | 0/5 [00:00&lt;?, ? url/s]
+Dl Completed...:  20%|██        | 1/5 [00:00&lt;00:01,  3.02 url/s]
+Dl Completed...:  20%|██        | 1/5 [00:00&lt;00:01,  3.02 url/s]
+Dl Completed...:  20%|██        | 1/5 [00:00&lt;00:01,  3.02 url/s]
+Dl Completed...:  20%|██        | 1/5 [00:00&lt;00:01,  3.02 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:00&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:01&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:02&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:03&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:04&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:05&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:06&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:06&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:06&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:06&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:06&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:06&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:06&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:06&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:06&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:06&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:06&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:06&lt;00:00,  4.67 url/s]
+Dl Completed...:  40%|████      | 2/5 [00:06&lt;00:00,  4.67 url/s]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:06&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:07&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:08&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:08&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:08&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:08&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:08&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:08&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:08&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:08&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:08&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:08&lt;00:05,  2.79s/ url]
+Dl Completed...:  60%|██████    | 3/5 [00:08&lt;00:05,  2.79s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:08&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:08&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:08&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:08&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:08&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:08&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:08&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:08&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:08&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:08&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:08&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:08&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:08&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:08&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:08&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:08&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:08&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:08&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:08&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:08&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:08&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:08&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:08&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:08&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:08&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:08&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:08&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:08&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:09&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:10&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:11&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:12&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:13&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:13&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:13&lt;00:02,  2.47s/ url]
+Dl Completed...:  80%|████████  | 4/5 [00:13&lt;00:02,  2.47s/ url]
+Dl Completed...: 100%|██████████| 5/5 [00:13&lt;00:00,  3.31s/ url]
+Dl Completed...: 100%|██████████| 5/5 [00:13&lt;00:00,  3.31s/ url]
+
+Dl Completed...: 100%|██████████| 5/5 [01:07&lt;00:00,  3.31s/ url]
+
+Dl Completed...: 100%|██████████| 5/5 [02:12&lt;00:00,  3.31s/ url]
+Extraction completed...: 100%|██████████| 2/2 [02:12&lt;00:00, 66.35s/ file]
+Dl Size...: 557 MiB [02:12,  4.20 MiB/s]
+Dl Completed...: 100%|██████████| 5/5 [02:12&lt;00:00, 26.54s/ url]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre><span class="ansi-bold">Dataset cnn_dailymail downloaded and prepared to /Users/adrianmoses/tensorflow_datasets/cnn_dailymail/3.1.0. Subsequent calls will reuse this data.</span>
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Mapping functions iwth data augmentation</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">tfds</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;horses_or_humans&#39;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">as_supervised</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">augment_images</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+  <span class="n">image</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+  <span class="n">image</span> <span class="o">=</span> <span class="p">(</span><span class="n">image</span><span class="o">/</span><span class="mi">255</span><span class="p">)</span>
+  <span class="n">image</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">random_flip_left_right</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">image</span><span class="p">,</span> <span class="n">label</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">augment_images</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Use Tensorflow Addons to use more augmentation features</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip install tensorflow-addons
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Collecting tensorflow-addons
+  Downloading tensorflow_addons-0.14.0-cp38-cp38-macosx_10_13_x86_64.whl (575 kB)
+     |████████████████████████████████| 575 kB 5.1 MB/s 
+Collecting typeguard&gt;=2.7
+  Downloading typeguard-2.12.1-py3-none-any.whl (17 kB)
+Installing collected packages: typeguard, tensorflow-addons
+Successfully installed tensorflow-addons-0.14.0 typeguard-2.12.1
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow_addons</span> <span class="k">as</span> <span class="nn">tfa</span>
+
+<span class="k">def</span> <span class="nf">augment_images</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+  <span class="n">image</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+  <span class="n">image</span> <span class="o">=</span> <span class="p">(</span><span class="n">image</span><span class="o">/</span><span class="mi">255</span><span class="p">)</span>
+  <span class="n">image</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">random_flip_left_right</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+  <span class="n">image</span> <span class="o">=</span> <span class="n">tfa</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;NEAREST&#39;</span><span class="p">)</span> <span class="c1"># rotate and fill with nearest neighboars</span>
+  <span class="k">return</span> <span class="n">image</span><span class="p">,</span> <span class="n">label</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Using-Custom-Splits">Using Custom Splits<a class="anchor-link" href="#Using-Custom-Splits"> </a></h2><p>Apply custom splits with the <code>split=</code> keyword arg</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">load_cats_vs_dogs</span><span class="p">(</span><span class="n">split_string</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">tfds</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;cats_vs_dogs&#39;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="n">split_string</span><span class="p">,</span> <span class="n">as_supervised</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="n">train_data</span> <span class="o">=</span> <span class="n">load_cats_vs_dogs</span><span class="p">(</span><span class="s1">&#39;train[:80%]&#39;</span><span class="p">)</span>
+
+<span class="n">validation_data</span> <span class="o">=</span> <span class="n">load_cats_vs_dogs</span><span class="p">(</span><span class="s1">&#39;train[80%:90%]&#39;</span><span class="p">)</span>
+
+<span class="n">test_data</span> <span class="o">=</span> <span class="n">load_cats_vs_dogs</span><span class="p">(</span><span class="s1">&#39;train[-10%:]&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>Dl Completed...:   0%|          | 0/1 [00:00&lt;?, ? url/s]</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre><span class="ansi-bold">Downloading and preparing dataset 786.68 MiB (download: 786.68 MiB, generated: Unknown size, total: 786.68 MiB) to /Users/adrianmoses/tensorflow_datasets/cats_vs_dogs/4.0.0...</span>
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>Dl Size...: 100%|██████████| 786/786 [00:18&lt;00:00, 43.25 MiB/s]
+Dl Completed...: 100%|██████████| 1/1 [00:18&lt;00:00, 18.18s/ url]
+Generating splits...:   0%|          | 0/1 [00:00&lt;?, ? splits/s]WARNING:absl:1738 images were corrupted and were skipped
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre><span class="ansi-bold">Dataset cats_vs_dogs downloaded and prepared to /Users/adrianmoses/tensorflow_datasets/cats_vs_dogs/4.0.0. Subsequent calls will reuse this data.</span>
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Files can be loaded in parallel</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">file_pattern</span> <span class="o">=</span> <span class="s1">&#39;/Users/adrianmoses/tensorflow_datasets/cats_vs_dogs/4.0.0/cats_vs_dogs-train.tfrecord*&#39;</span>
+
+<span class="n">files</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">list_files</span><span class="p">(</span><span class="n">file_pattern</span><span class="p">)</span>
+
+<span class="n">train_dataset</span> <span class="o">=</span> <span class="n">files</span><span class="o">.</span><span class="n">interleave</span><span class="p">(</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">TFRecordDataset</span><span class="p">,</span> 
+  <span class="n">cycle_length</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="c1"># records at a time (concurrently)</span>
+  <span class="n">num_parallel_calls</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">AUTOTUNE</span> <span class="c1"># dynamically set based on available CPUs, use multiprocessing if not</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+</div>
+
+
+
+  </div><a class="u-url" href="/ml-journal/2021/09/26/tensorflow-public-datasets.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/ml-journal/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/ml-journal/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/ml-journal/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>ML Journal and Writings.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/adrianmoses" title="adrianmoses"><svg class="svg-icon grey"><use xlink:href="/ml-journal/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/marsmoses" title="marsmoses"><svg class="svg-icon grey"><use xlink:href="/ml-journal/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
