@@ -4,9 +4,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Title | Adrian Moses</title>
+<title>AI and ML for Coders | Adrian Moses</title>
 <meta name="generator" content="Jekyll v4.1.1" />
-<meta property="og:title" content="Title" />
+<meta property="og:title" content="AI and ML for Coders" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="ML Journal and Writings." />
 <meta property="og:description" content="ML Journal and Writings." />
@@ -16,7 +16,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-09-27T00:00:00-05:00" />
 <script type="application/ld+json">
-{"description":"ML Journal and Writings.","url":"https://adrianmoses.github.io/ml-journal/2021/09/27/ml-for-coders-intro-to-nlp.html","@type":"BlogPosting","headline":"Title","dateModified":"2021-09-27T00:00:00-05:00","datePublished":"2021-09-27T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://adrianmoses.github.io/ml-journal/2021/09/27/ml-for-coders-intro-to-nlp.html"},"@context":"https://schema.org"}</script>
+{"description":"ML Journal and Writings.","url":"https://adrianmoses.github.io/ml-journal/2021/09/27/ml-for-coders-intro-to-nlp.html","@type":"BlogPosting","headline":"AI and ML for Coders","dateModified":"2021-09-27T00:00:00-05:00","datePublished":"2021-09-27T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://adrianmoses.github.io/ml-journal/2021/09/27/ml-for-coders-intro-to-nlp.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/ml-journal/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://adrianmoses.github.io/ml-journal/feed.xml" title="Adrian Moses" /><link rel="shortcut icon" type="image/x-icon" href="/ml-journal/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -71,13 +71,13 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Title</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-09-27T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">AI and ML for Coders</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-09-27T00:00:00-05:00" itemprop="datePublished">
         Sep 27, 2021
       </time>
        • <span class="read-time" title="Estimated read time">
     
     
-      1 min read
+      3 min read
     
 </span></p>
 
@@ -117,6 +117,411 @@ window.onload = wrap_img;
 
 <div class="container" id="notebook-container">
         
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span>
+<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.preprocessing.text</span> <span class="kn">import</span> <span class="n">Tokenizer</span>
+
+<span class="n">sentences</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;Today is a sunny day&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Today is a rainy day&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Is it sunny today?&#39;</span>
+<span class="p">]</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">(</span><span class="n">num_words</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">tokenizer</span><span class="o">.</span><span class="n">fit_on_texts</span><span class="p">(</span><span class="n">sentences</span><span class="p">)</span>
+<span class="n">word_index</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">word_index</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word_index</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>2021-09-27 20:13:39.520371: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library &#39;libcudart.so.11.0&#39;; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
+2021-09-27 20:13:39.520431: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+{&#39;today&#39;: 1, &#39;is&#39;: 2, &#39;a&#39;: 3, &#39;sunny&#39;: 4, &#39;day&#39;: 5, &#39;rainy&#39;: 6, &#39;it&#39;: 7}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="n">sequences</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">texts_to_sequences</span><span class="p">(</span><span class="n">sentences</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sequences</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[1, 2, 3, 4, 5], [1, 2, 3, 6, 5], [2, 7, 4, 1]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>fit_on_texts</code> fits the tokenizer to the words, creating a vocabulary</p>
+<p>This means words not provided in the initial sentences will be ignored. Instead of ignoring, which will remove context and information, tokenize unknown words with special tokens. These unknonw words are considered out-of-vocabulary tokens or <code>OOV</code></p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="n">test_data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;Today is a snowy day&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Will it be rainy tomorrow?&#39;</span>
+<span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">(</span><span class="n">num_words</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">oov_token</span><span class="o">=</span><span class="s2">&quot;&lt;OOV&gt;&quot;</span><span class="p">)</span>
+<span class="n">tokenizer</span><span class="o">.</span><span class="n">fit_on_texts</span><span class="p">(</span><span class="n">sentences</span><span class="p">)</span>
+<span class="n">word_index</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">word_index</span>
+<span class="n">sequences</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">texts_to_sequences</span><span class="p">(</span><span class="n">sentences</span><span class="p">)</span>
+
+<span class="n">test_sequences</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">texts_to_sequences</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word_index</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_sequences</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{&#39;&lt;OOV&gt;&#39;: 1, &#39;today&#39;: 2, &#39;is&#39;: 3, &#39;a&#39;: 4, &#39;sunny&#39;: 5, &#39;day&#39;: 6, &#39;rainy&#39;: 7, &#39;it&#39;: 8}
+[[2, 3, 4, 1, 6], [1, 8, 1, 7, 1]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Sequences have to be of equal length when input into a model. To handle inputing batch sentences of varying size, pad the sentences with padding tokens with the max expected length</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="n">sentences</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;Today is a sunny day&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Today is a rainy day&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Is it sunny today?&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;I really enjoyed walking in the snow today&#39;</span>
+<span class="p">]</span>
+
+<span class="n">seq</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">texts_to_sequences</span><span class="p">(</span><span class="n">sentences</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[2, 3, 4, 5, 6], [2, 3, 4, 7, 6], [3, 8, 5, 2], [1, 1, 1, 1, 1, 1, 1, 2]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow.keras.preprocessing.sequence</span> <span class="kn">import</span> <span class="n">pad_sequences</span>
+
+<span class="n">padded</span> <span class="o">=</span> <span class="n">pad_sequences</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">padded</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[0 0 0 2 3 4 5 6]
+ [0 0 0 2 3 4 7 6]
+ [0 0 0 0 3 8 5 2]
+ [1 1 1 1 1 1 1 2]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>By default sequences are <em>pre-padded</em> use the <code>padding</code> parameter to use <em>postpadding</em></p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="n">padded</span> <span class="o">=</span> <span class="n">pad_sequences</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">padded</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[2 3 4 5 6 0 0 0]
+ [2 3 4 7 6 0 0 0]
+ [3 8 5 2 0 0 0 0]
+ [1 1 1 1 1 1 1 2]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Set desired max length with <code>maxlen</code> parameter</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="n">padded</span> <span class="o">=</span> <span class="n">pad_sequences</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="n">maxlen</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">padded</span><span class="p">)</span>
+
+<span class="n">padded</span> <span class="o">=</span> <span class="n">pad_sequences</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="n">maxlen</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">truncating</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">padded</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[2 3 4 5 6 0]
+ [2 3 4 7 6 0]
+ [3 8 5 2 0 0]
+ [1 1 1 1 1 2]]
+[[2 3 4 5 6 0]
+ [2 3 4 7 6 0]
+ [3 8 5 2 0 0]
+ [1 1 1 1 1 1]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">bs4</span><span class="o">==</span><span class="mf">0.0</span><span class="o">.</span><span class="mi">1</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Collecting bs4==0.0.1
+  Downloading bs4-0.0.1.tar.gz (1.1 kB)
+Collecting beautifulsoup4
+  Downloading beautifulsoup4-4.10.0-py3-none-any.whl (97 kB)
+     |████████████████████████████████| 97 kB 10.9 MB/s 
+Collecting soupsieve&gt;1.2
+  Downloading soupsieve-2.2.1-py3-none-any.whl (33 kB)
+Building wheels for collected packages: bs4
+  Building wheel for bs4 (setup.py) ... done
+  Created wheel for bs4: filename=bs4-0.0.1-py3-none-any.whl size=1271 sha256=f67f7b5c87f807d24ab2ef5d7af5fd87fcc137e10260e70e370ef17f6b427d4f
+  Stored in directory: /root/.cache/pip/wheels/0a/9e/ba/20e5bbc1afef3a491f0b3bb74d508f99403aabe76eda2167ca
+Successfully built bs4
+Installing collected packages: soupsieve, beautifulsoup4, bs4
+Successfully installed beautifulsoup4-4.10.0 bs4-0.0.1 soupsieve-2.2.1
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">sentences</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">sentence</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Skipping-rest-of-chapter">Skipping rest of chapter<a class="anchor-link" href="#Skipping-rest-of-chapter"> </a></h2><p>The rest of the chapter goes into loading data from different data sources and tokenizing them. For me that's very trivial, so i'm going to skip.</p>
+<p>Ultimately I hope to not follow a textbook but start creating my own projects.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a style="text-decoration:none;line-height:16px;display:flex;color:#5B5B62;padding:10px;justify-content:end;" href="https://deepnote.com?utm_source=created-in-deepnote-cell&amp;projectId=2917b4c9-c92f-4224-9a22-9b2a43486dc1" target="_blank">
+<figure>
+  
+    <img class="docimage" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iODBweCIgaGVpZ2h0PSI4MHB4IiB2aWV3Qm94PSIwIDAgODAgODAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDU0LjEgKDc2NDkwKSAtIGh0dHBzOi8vc2tldGNoYXBwLmNvbSAtLT4KICAgIDx0aXRsZT5Hcm91cCAzPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IkxhbmRpbmciIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJBcnRib2FyZCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEyMzUuMDAwMDAwLCAtNzkuMDAwMDAwKSI+CiAgICAgICAgICAgIDxnIGlkPSJHcm91cC0zIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMjM1LjAwMDAwMCwgNzkuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICA8cG9seWdvbiBpZD0iUGF0aC0yMCIgZmlsbD0iIzAyNjVCNCIgcG9pbnRzPSIyLjM3NjIzNzYyIDgwIDM4LjA0NzY2NjcgODAgNTcuODIxNzgyMiA3My44MDU3NTkyIDU3LjgyMTc4MjIgMzIuNzU5MjczOSAzOS4xNDAyMjc4IDMxLjY4MzE2ODMiPjwvcG9seWdvbj4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0zNS4wMDc3MTgsODAgQzQyLjkwNjIwMDcsNzYuNDU0OTM1OCA0Ny41NjQ5MTY3LDcxLjU0MjI2NzEgNDguOTgzODY2LDY1LjI2MTk5MzkgQzUxLjExMjI4OTksNTUuODQxNTg0MiA0MS42NzcxNzk1LDQ5LjIxMjIyODQgMjUuNjIzOTg0Niw0OS4yMTIyMjg0IEMyNS40ODQ5Mjg5LDQ5LjEyNjg0NDggMjkuODI2MTI5Niw0My4yODM4MjQ4IDM4LjY0NzU4NjksMzEuNjgzMTY4MyBMNzIuODcxMjg3MSwzMi41NTQ0MjUgTDY1LjI4MDk3Myw2Ny42NzYzNDIxIEw1MS4xMTIyODk5LDc3LjM3NjE0NCBMMzUuMDA3NzE4LDgwIFoiIGlkPSJQYXRoLTIyIiBmaWxsPSIjMDAyODY4Ij48L3BhdGg+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMCwzNy43MzA0NDA1IEwyNy4xMTQ1MzcsMC4yNTcxMTE0MzYgQzYyLjM3MTUxMjMsLTEuOTkwNzE3MDEgODAsMTAuNTAwMzkyNyA4MCwzNy43MzA0NDA1IEM4MCw2NC45NjA0ODgyIDY0Ljc3NjUwMzgsNzkuMDUwMzQxNCAzNC4zMjk1MTEzLDgwIEM0Ny4wNTUzNDg5LDc3LjU2NzA4MDggNTMuNDE4MjY3Nyw3MC4zMTM2MTAzIDUzLjQxODI2NzcsNTguMjM5NTg4NSBDNTMuNDE4MjY3Nyw0MC4xMjg1NTU3IDM2LjMwMzk1NDQsMzcuNzMwNDQwNSAyNS4yMjc0MTcsMzcuNzMwNDQwNSBDMTcuODQzMDU4NiwzNy43MzA0NDA1IDkuNDMzOTE5NjYsMzcuNzMwNDQwNSAwLDM3LjczMDQ0MDUgWiIgaWQ9IlBhdGgtMTkiIGZpbGw9IiMzNzkzRUYiPjwvcGF0aD4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+" alt="Created in deepnote.com" />
+    
+    
+</figure>
+ &lt;/img&gt;
+Created in <span style="font-weight:600;margin-left:4px;">Deepnote</span></a></p>
+
+</div>
+</div>
+</div>
 </div>
 
 
